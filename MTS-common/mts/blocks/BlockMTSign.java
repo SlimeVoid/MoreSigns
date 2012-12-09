@@ -6,6 +6,7 @@ import mts.core.MTSInit;
 import mts.core.MTSItemParts;
 import net.minecraft.src.BlockSign;
 import net.minecraft.src.EntityItem;
+import net.minecraft.src.EnumGameType;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
@@ -52,18 +53,20 @@ public class BlockMTSign extends BlockSign {
 			break;
 		}
 		if (itemDamage > -1) {
-			ItemStack itemstack = MTSItemParts.getStack(itemDamage);
-			if (itemstack != null) {
-				EntityItem entityitem = new EntityItem(
-						world,
-						i,
-						j,
-						k,
-						new ItemStack(
-								itemstack.itemID,
-								1,
-								itemstack.getItemDamage()));
-				world.spawnEntityInWorld(entityitem);
+			if(world.getWorldInfo().getGameType() != EnumGameType.CREATIVE) {
+				ItemStack itemstack = MTSItemParts.getStack(itemDamage);
+				if (itemstack != null) {
+					EntityItem entityitem = new EntityItem(
+							world,
+							i,
+							j,
+							k,
+							new ItemStack(
+									itemstack.itemID,
+									1,
+									itemstack.getItemDamage()));
+					world.spawnEntityInWorld(entityitem);
+				}
 			} else {
 				return;
 			}

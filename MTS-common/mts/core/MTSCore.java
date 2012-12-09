@@ -16,7 +16,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import eurysmods.api.ICommonProxy;
 
 public class MTSCore {
-	public static String version = "v3.1";
 	public static File configFile;
 	public static Configuration configuration;
 	public static boolean initialized = false;

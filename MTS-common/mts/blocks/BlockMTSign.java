@@ -53,18 +53,18 @@ public class BlockMTSign extends BlockSign {
 			break;
 		}
 		if (itemDamage > -1) {
-			if(world.getWorldInfo().getGameType() != EnumGameType.CREATIVE) {
+			if (world.getWorldInfo().getGameType() != EnumGameType.CREATIVE) {
 				ItemStack itemstack = MTSItemParts.getStack(itemDamage);
 				if (itemstack != null) {
 					EntityItem entityitem = new EntityItem(
 							world,
-							i,
-							j,
-							k,
-							new ItemStack(
-									itemstack.itemID,
-									1,
-									itemstack.getItemDamage()));
+								i,
+								j,
+								k,
+								new ItemStack(
+										itemstack.itemID,
+											1,
+											itemstack.getItemDamage()));
 					world.spawnEntityInWorld(entityitem);
 				}
 			} else {

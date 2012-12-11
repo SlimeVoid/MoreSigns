@@ -2,15 +2,14 @@ package mts.core;
 
 import java.io.File;
 
-import eurysmods.api.ICommonProxy;
-import eurysmods.api.ICore;
-import eurysmods.core.Core;
-import eurysmods.core.EurysCore;
-
 import mts.tileentities.TileEntityMTSign;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.TileEntity;
 import net.minecraftforge.common.Configuration;
+import eurysmods.api.ICommonProxy;
+import eurysmods.api.ICore;
+import eurysmods.core.Core;
+import eurysmods.core.EurysCore;
 
 public class MTSInit {
 	public static ICore MTS;
@@ -42,7 +41,7 @@ public class MTSInit {
 		MTS.setModChannel("MTS");
 		MTSCore.configFile = new File(
 				MTSInit.MTS.getProxy().getMinecraftDir(),
-				"config/MultiTexturedSigns.cfg");
+					"config/MultiTexturedSigns.cfg");
 		MTSCore.configuration = new Configuration(MTSCore.configFile);
 		load();
 	}

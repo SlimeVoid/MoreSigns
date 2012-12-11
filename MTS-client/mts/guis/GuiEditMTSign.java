@@ -34,9 +34,9 @@ public class GuiEditMTSign extends GuiScreen {
 		Keyboard.enableRepeatEvents(true);
 		controlList.add(new GuiButton(
 				0,
-				width / 2 - 100,
-				height / 4 + 120,
-				"Done"));
+					width / 2 - 100,
+					height / 4 + 120,
+					"Done"));
 	}
 
 	@Override

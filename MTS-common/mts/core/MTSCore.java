@@ -31,20 +31,20 @@ public class MTSCore {
 		MTSBlocks.mtSignPost.id = configurationProperties();
 		MTSBlocks.mtSignPost.me = (new BlockMTSign(
 				MTSBlocks.mtSignPost.id,
-				TileEntityMTSign.class,
-				true,
-				1F,
-				2F,
-				true,
-				true)).setBlockName("mtSignPost");
+					TileEntityMTSign.class,
+					true,
+					1F,
+					2F,
+					true,
+					true)).setBlockName("mtSignPost");
 		MTSBlocks.mtSignWall.me = (new BlockMTSign(
 				MTSBlocks.mtSignWall.id,
-				TileEntityMTSign.class,
-				false,
-				1F,
-				2F,
-				true,
-				true)).setBlockName("mtSignWall");
+					TileEntityMTSign.class,
+					false,
+					1F,
+					2F,
+					true,
+					true)).setBlockName("mtSignWall");
 		GameRegistry.registerTileEntity(TileEntityMTSign.class, "mtSign");
 		MTSItems.mtsItemSignParts.me = (new ItemMTSignParts(
 				MTSItems.mtsItemSignParts.offsetID()))
@@ -57,8 +57,8 @@ public class MTSCore {
 		for (MTSItemParts part : MTSItemParts.values()) {
 			part.me = new ItemStack(
 					MTSItems.mtsItemSignParts.me,
-					1,
-					part.stackID);
+						1,
+						part.stackID);
 		}
 		for (MTSItemSigns sign : MTSItemSigns.values()) {
 			sign.me = new ItemStack(MTSItems.mtsItemSigns.me, 1, sign.stackID);
@@ -245,33 +245,34 @@ public class MTSCore {
 
 	public static int configurationProperties() {
 		configuration.load();
-		MTSBlocks.mtSignPost.id = Integer.parseInt(configuration
-				.get(Configuration.CATEGORY_BLOCK, "mtSignPost", 213).value);
+		MTSBlocks.mtSignPost.id = Integer.parseInt(configuration.get(
+				Configuration.CATEGORY_BLOCK,
+				"mtSignPost",
+				213).value);
 		MTSBlocks.mtSignPost.name = "Multi-Textured Sign-Post";
 
-		MTSBlocks.mtSignWall.id = Integer.parseInt(configuration
-				.get(Configuration.CATEGORY_BLOCK, "mtSignWall", 212).value);
+		MTSBlocks.mtSignWall.id = Integer.parseInt(configuration.get(
+				Configuration.CATEGORY_BLOCK,
+				"mtSignWall",
+				212).value);
 		MTSBlocks.mtSignWall.name = "Multi-Textured Wall-Sign";
 
-		MTSItems.mtsItemSignParts.setID(Integer.parseInt(configuration
-				.get(
-						Configuration.CATEGORY_ITEM,
-						"mtSignParts",
-						7000).value));
+		MTSItems.mtsItemSignParts.setID(Integer.parseInt(configuration.get(
+				Configuration.CATEGORY_ITEM,
+				"mtSignParts",
+				7000).value));
 		MTSItems.mtsItemSignParts.name = "Multi-Textured Sign Part";
 
-		MTSItems.mtsItemSigns.setID(Integer.parseInt(configuration
-				.get(
-						Configuration.CATEGORY_ITEM,
-						"mtSign",
-						7001).value));
+		MTSItems.mtsItemSigns.setID(Integer.parseInt(configuration.get(
+				Configuration.CATEGORY_ITEM,
+				"mtSign",
+				7001).value));
 		MTSItems.mtsItemSigns.name = "Multi-Textured Sign";
 
-		MTSItems.mtsItemSignTool.setID(Integer.parseInt(configuration
-				.get(
-						Configuration.CATEGORY_ITEM,
-						"mtSignTool",
-						7002).value));
+		MTSItems.mtsItemSignTool.setID(Integer.parseInt(configuration.get(
+				Configuration.CATEGORY_ITEM,
+				"mtSignTool",
+				7002).value));
 		MTSItems.mtsItemSignTool.name = "Multi-Textured Sign Wand";
 
 		MTSItemParts.ironCladPlating.name = "Iron-Clad Plating";

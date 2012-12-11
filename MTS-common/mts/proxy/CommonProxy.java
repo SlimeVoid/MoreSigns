@@ -9,8 +9,8 @@ import mts.network.packets.PacketOpenGui;
 import mts.network.packets.PacketUpdateMTSign;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.NetHandler;
 import net.minecraft.src.INetworkManager;
+import net.minecraft.src.NetHandler;
 import net.minecraft.src.Packet1Login;
 import net.minecraft.src.Packet250CustomPayload;
 import net.minecraft.src.TileEntity;
@@ -35,8 +35,8 @@ public class CommonProxy implements ICommonProxy {
 		EntityPlayerMP entityplayermp = (EntityPlayerMP) entityplayer;
 		PacketOpenGui gui = new PacketOpenGui(
 				tileentity.xCoord,
-				tileentity.yCoord,
-				tileentity.zCoord);
+					tileentity.yCoord,
+					tileentity.zCoord);
 		entityplayermp.playerNetServerHandler.netManager.addToSendQueue(gui
 				.getPacket());
 	}
@@ -135,12 +135,12 @@ public class CommonProxy implements ICommonProxy {
 	@Override
 	public void login(NetHandler handler, INetworkManager manager, Packet1Login login) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void registerTickHandler() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

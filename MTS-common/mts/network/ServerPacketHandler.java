@@ -1,12 +1,12 @@
 package mts.network;
 
-import eurysmods.api.IPacketHandling;
-import eurysmods.network.packets.core.PacketTileEntity;
-import eurysmods.network.packets.core.PacketUpdate;
 import mts.tileentities.TileEntityMTSign;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
+import eurysmods.api.IPacketHandling;
+import eurysmods.network.packets.core.PacketTileEntity;
+import eurysmods.network.packets.core.PacketUpdate;
 
 public class ServerPacketHandler implements IPacketHandling {
 	@Override

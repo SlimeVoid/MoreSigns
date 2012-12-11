@@ -1,9 +1,9 @@
 package mts.network.packets;
 
-import eurysmods.network.packets.core.PacketIds;
-import eurysmods.network.packets.core.PacketUpdate;
 import mts.core.MTSInit;
 import net.minecraft.src.World;
+import eurysmods.network.packets.core.PacketIds;
+import eurysmods.network.packets.core.PacketUpdate;
 
 public class PacketOpenGui extends PacketUpdate {
 	public PacketOpenGui() {

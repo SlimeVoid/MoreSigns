@@ -1,8 +1,8 @@
 package mts.network.packets;
 
-import eurysmods.network.packets.core.PacketTileEntityMT;
 import mts.core.MTSInit;
 import mts.tileentities.TileEntityMTSign;
+import eurysmods.network.packets.core.PacketTileEntityMT;
 
 public class PacketUpdateMTSign extends PacketTileEntityMT {
 	private String[] signLines;

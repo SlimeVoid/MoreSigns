@@ -79,7 +79,7 @@ public class ItemMTSigns extends Item {
 		if (l == 5) {
 			i++;
 		}
-		if (!entityplayer.func_82247_a(i, j, k, l, itemstack)) {
+		if (!entityplayer.canPlayerEdit(i, j, k, l, itemstack)) {
 			return false;
 		}
 		if (!signpost.canPlaceBlockAt(world, i, j, k)) {

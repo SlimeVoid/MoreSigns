@@ -20,7 +20,7 @@ public class ItemMTSignTool extends Item {
 
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float a, float b, float c) {
-		if (!entityplayer.func_82247_a(i, j, k, l, itemstack)) {
+		if (!entityplayer.canPlayerEdit(i, j, k, l, itemstack)) {
 			return false;
 		} else {
 			TileEntity tileentity = world.getBlockTileEntity(i, j, k);

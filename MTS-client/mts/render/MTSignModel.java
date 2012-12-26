@@ -1,7 +1,7 @@
 package mts.render;
 
-import net.minecraft.src.ModelBase;
-import net.minecraft.src.ModelRenderer;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
 
 public class MTSignModel extends ModelBase {
 	public ModelRenderer mtsSignBoard;

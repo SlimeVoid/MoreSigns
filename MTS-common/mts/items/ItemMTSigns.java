@@ -3,14 +3,14 @@ package mts.items;
 import mts.core.MTSBlocks;
 import mts.core.MTSInit;
 import mts.tileentities.TileEntityMTSign;
-import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
 public class ItemMTSigns extends Item {
 	public ItemMTSigns(int i) {
@@ -40,6 +40,7 @@ public class ItemMTSigns extends Item {
 		return i;
 	}
 
+	@Override
 	public int getIconFromDamage(int i) {
 		int index = i;
 		switch (i) {

@@ -1,6 +1,6 @@
 package mts.core;
 
-import net.minecraft.src.Item;
+import net.minecraft.item.Item;
 
 public enum MTSItems {
 	mtsItemSignParts, mtsItemSigns, mtsItemSignTool;

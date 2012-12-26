@@ -3,13 +3,13 @@ package mts.guis;
 import mts.core.MTSBlocks;
 import mts.network.packets.PacketUpdateMTSign;
 import mts.tileentities.TileEntityMTSign;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.ChatAllowedCharacters;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiScreen;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.src.ModLoader;
-import net.minecraft.src.TileEntityRenderer;
+import net.minecraft.util.ChatAllowedCharacters;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;

@@ -7,9 +7,9 @@ import mts.items.ItemMTSignParts;
 import mts.items.ItemMTSignTool;
 import mts.items.ItemMTSigns;
 import mts.tileentities.TileEntityMTSign;
-import net.minecraft.src.FurnaceRecipes;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -217,16 +217,19 @@ public class MTSCore {
 
 		FurnaceRecipes.smelting().addSmelting(
 				MTSItems.mtsItemSignParts.getID(),
-				0,
-				(new ItemStack(Item.ingotIron, 2)));
+				MTSItemParts.ironCladPlating.stackID,
+				(new ItemStack(Item.ingotIron, 2)),
+				0);
 		FurnaceRecipes.smelting().addSmelting(
 				MTSItems.mtsItemSignParts.getID(),
-				2,
-				(new ItemStack(Item.ingotGold, 2)));
+				MTSItemParts.goldPlating.stackID,
+				(new ItemStack(Item.ingotGold, 2)),
+				2);
 		FurnaceRecipes.smelting().addSmelting(
 				MTSItems.mtsItemSignParts.getID(),
-				4,
-				(new ItemStack(Item.diamond, 2)));
+				MTSItemParts.diamondPlating.stackID,
+				(new ItemStack(Item.diamond, 2)),
+				4);
 
 		// Wand
 		GameRegistry.addRecipe(

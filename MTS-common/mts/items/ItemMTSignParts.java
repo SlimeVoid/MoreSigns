@@ -1,9 +1,9 @@
 package mts.items;
 
 import mts.core.MTSInit;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ItemMTSignParts extends Item {
 	public ItemMTSignParts(int i) {
@@ -35,6 +35,7 @@ public class ItemMTSignParts extends Item {
 		return i;
 	}
 
+	@Override
 	public int getIconFromDamage(int i) {
 		if (i == 0 || i == 2 || i == 4) {
 			setMaxStackSize(16);

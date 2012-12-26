@@ -4,12 +4,12 @@ import java.util.Random;
 
 import mts.core.MTSInit;
 import mts.core.MTSItemParts;
-import net.minecraft.src.BlockSign;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EnumGameType;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.block.BlockSign;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.EnumGameType;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 public class BlockMTSign extends BlockSign {
 
@@ -24,6 +24,7 @@ public class BlockMTSign extends BlockSign {
 			setRequiresSelfNotify();
 	}
 
+	@Override
 	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
 		return MTSInit.getDamageValue(par1IBlockAccess, par2, par3, par4);
 	}

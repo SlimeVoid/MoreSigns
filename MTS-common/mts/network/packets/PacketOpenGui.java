@@ -1,7 +1,7 @@
 package mts.network.packets;
 
 import mts.core.MTSInit;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 import eurysmods.network.packets.core.PacketIds;
 import eurysmods.network.packets.core.PacketUpdate;
 

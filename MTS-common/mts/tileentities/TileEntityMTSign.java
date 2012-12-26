@@ -1,9 +1,9 @@
 package mts.tileentities;
 
 import mts.network.packets.PacketUpdateMTSign;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Packet;
-import net.minecraft.src.World;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.world.World;
 import eurysmods.network.packets.core.PacketPayload;
 import eurysmods.network.packets.core.PacketUpdate;
 import eurysmods.tileentities.TileEntityMT;

@@ -1,5 +1,7 @@
 package eurymachus.mts.items;
 
+import java.util.List;
+
 import eurymachus.mts.core.MTSBlocks;
 import eurymachus.mts.core.MTSInit;
 import eurymachus.mts.tileentities.TileEntityMTSign;
@@ -110,5 +112,12 @@ public class ItemMTSigns extends Item {
 	@Override
 	public String getTextureFile() {
 		return MTSInit.MTS.getItemSheet();
+	}
+	
+	@Override
+	public void getSubItems(int itemID, CreativeTabs creativeTabs, List list) {
+		for (int i = 0; i < this.signNames.length; i++) {
+			list.add(new ItemStack(itemID, 1, i));
+		}
 	}
 }

@@ -1,5 +1,7 @@
 package eurymachus.mts.items;
 
+import java.util.List;
+
 import eurymachus.mts.core.MTSInit;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -49,5 +51,12 @@ public class ItemMTSignParts extends Item {
 	@Override
 	public String getTextureFile() {
 		return MTSInit.MTS.getItemSheet();
+	}
+	
+	@Override
+	public void getSubItems(int itemID, CreativeTabs creativeTabs, List list) {
+		for (int i = 0; i < this.signParts.length; i++) {
+			list.add(new ItemStack(itemID, 1, i));
+		}
 	}
 }

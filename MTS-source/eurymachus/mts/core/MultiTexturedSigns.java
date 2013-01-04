@@ -29,17 +29,16 @@ public class MultiTexturedSigns {
 			serverSide = "eurymachus.mts.proxy.CommonProxy")
 	public static ICommonProxy proxy;
 
-	@Init
-	public void MultiTexturedSignsInit(FMLInitializationEvent event) {
-	}
-
 	@PreInit
 	public void MultiTexturedSignsPreInit(FMLPreInitializationEvent event) {
+	}
 
+	@Init
+	public void MultiTexturedSignsInit(FMLInitializationEvent event) {
+		MTSCore.initialize(proxy);
 	}
 
 	@PostInit
 	public void MultiTexturedSignsPostInit(FMLPostInitializationEvent event) {
-		MTSCore.initialize(proxy);
 	}
 }

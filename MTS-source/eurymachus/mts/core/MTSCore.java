@@ -68,10 +68,7 @@ public class MTSCore {
 	public static void registerBlocks() {
 		for (MTSBlocks block : MTSBlocks.values()) {
 			if (block != null && block.me != null) {
-				GameRegistry.registerBlock(block.me);
-				if (block.name != null) {
-					ModLoader.addName(block.me, block.name);
-				}
+				GameRegistry.registerBlock(block.me, block.name);
 			}
 		}
 	}

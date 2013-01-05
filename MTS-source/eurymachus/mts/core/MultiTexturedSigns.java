@@ -35,10 +35,10 @@ public class MultiTexturedSigns {
 
 	@Init
 	public void MultiTexturedSignsInit(FMLInitializationEvent event) {
-		MTSCore.initialize(proxy);
 	}
 
 	@PostInit
 	public void MultiTexturedSignsPostInit(FMLPostInitializationEvent event) {
+		MTSCore.initialize(proxy);
 	}
 }

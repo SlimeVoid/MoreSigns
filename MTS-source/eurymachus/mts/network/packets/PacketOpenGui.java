@@ -1,9 +1,9 @@
 package eurymachus.mts.network.packets;
 
+import slimevoid.lib.network.PacketIds;
+import slimevoid.lib.network.PacketUpdate;
 import net.minecraft.world.World;
 import eurymachus.mts.core.MTSInit;
-import eurysmods.network.packets.core.PacketIds;
-import eurysmods.network.packets.core.PacketUpdate;
 
 public class PacketOpenGui extends PacketUpdate {
 	public PacketOpenGui() {

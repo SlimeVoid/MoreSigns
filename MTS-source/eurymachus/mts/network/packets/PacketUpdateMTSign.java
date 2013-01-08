@@ -1,8 +1,8 @@
 package eurymachus.mts.network.packets;
 
+import slimevoid.lib.network.PacketTileEntityMT;
 import eurymachus.mts.core.MTSInit;
 import eurymachus.mts.tileentities.TileEntityMTSign;
-import eurysmods.network.packets.core.PacketTileEntityMT;
 
 public class PacketUpdateMTSign extends PacketTileEntityMT {
 	private String[] signLines;

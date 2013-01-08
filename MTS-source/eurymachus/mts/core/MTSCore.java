@@ -2,6 +2,8 @@ package eurymachus.mts.core;
 
 import java.io.File;
 
+import slimevoid.lib.ICommonProxy;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -13,7 +15,6 @@ import eurymachus.mts.items.ItemMTSignParts;
 import eurymachus.mts.items.ItemMTSignTool;
 import eurymachus.mts.items.ItemMTSigns;
 import eurymachus.mts.tileentities.TileEntityMTSign;
-import eurysmods.api.ICommonProxy;
 
 public class MTSCore {
 	public static File configFile;

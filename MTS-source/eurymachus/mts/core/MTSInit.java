@@ -2,14 +2,15 @@ package eurymachus.mts.core;
 
 import java.io.File;
 
+import slimevoid.lib.ICommonProxy;
+import slimevoid.lib.ICore;
+import slimevoid.lib.core.Core;
+import slimevoid.lib.core.SlimevoidCore;
+
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.Configuration;
 import eurymachus.mts.tileentities.TileEntityMTSign;
-import eurysmods.api.ICommonProxy;
-import eurysmods.api.ICore;
-import eurysmods.core.Core;
-import eurysmods.core.EurysCore;
 
 public class MTSInit {
 	public static ICore MTS;
@@ -47,17 +48,17 @@ public class MTSInit {
 	}
 
 	public static void load() {
-		EurysCore.console(MTS.getModName(), "Registering items...");
+		SlimevoidCore.console(MTS.getModName(), "Registering items...");
 		MTSCore.addItems();
-		EurysCore.console(MTS.getModName(), "Registering blocks...");
+		SlimevoidCore.console(MTS.getModName(), "Registering blocks...");
 		MTSCore.registerBlocks();
 		MTS.getProxy().registerRenderInformation();
 		MTS
 				.getProxy()
 					.registerTileEntitySpecialRenderer(TileEntityMTSign.class);
-		EurysCore.console(MTS.getModName(), "Naming items...");
+		SlimevoidCore.console(MTS.getModName(), "Naming items...");
 		MTSCore.addItemNames();
-		EurysCore.console(MTS.getModName(), "Registering recipes...");
+		SlimevoidCore.console(MTS.getModName(), "Registering recipes...");
 		MTSCore.addRecipes();
 	}
 

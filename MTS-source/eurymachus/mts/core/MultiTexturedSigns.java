@@ -15,7 +15,7 @@ import eurymachus.mts.network.MTSConnection;
 @Mod(
 		modid = "MultiTexturedSigns",
 		name = "Multi-Textured Signs",
-		dependencies = "after:EurysCore",
+		dependencies = "after:SlimevoidLib",
 		version = "2.0.0.0")
 @NetworkMod(
 		clientSideRequired = true,

@@ -1,11 +1,11 @@
 package eurymachus.mts.tileentities;
 
-import slimevoid.lib.network.PacketPayload;
-import slimevoid.lib.network.PacketUpdate;
-import slimevoid.lib.tileentity.TileEntityMT;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.world.World;
+import slimevoid.lib.network.PacketPayload;
+import slimevoid.lib.network.PacketUpdate;
+import slimevoid.lib.tileentity.TileEntityMT;
 import eurymachus.mts.network.packets.PacketUpdateMTSign;
 
 public class TileEntityMTSign extends TileEntityMT {

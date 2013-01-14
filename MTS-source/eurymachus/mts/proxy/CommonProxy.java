@@ -3,10 +3,6 @@ package eurymachus.mts.proxy;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-import slimevoid.lib.ICommonProxy;
-import slimevoid.lib.IPacketHandling;
-import slimevoid.lib.network.PacketIds;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetworkManager;
@@ -15,6 +11,9 @@ import net.minecraft.network.packet.Packet1Login;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import slimevoid.lib.ICommonProxy;
+import slimevoid.lib.IPacketHandling;
+import slimevoid.lib.network.PacketIds;
 import cpw.mods.fml.common.network.Player;
 import eurymachus.mts.core.MTSInit;
 import eurymachus.mts.network.ServerPacketHandler;

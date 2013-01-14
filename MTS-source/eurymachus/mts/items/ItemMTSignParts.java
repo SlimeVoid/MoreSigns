@@ -2,10 +2,10 @@ package eurymachus.mts.items;
 
 import java.util.List;
 
-import eurymachus.mts.core.MTSInit;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import eurymachus.mts.core.MTSInit;
 
 public class ItemMTSignParts extends Item {
 	public ItemMTSignParts(int i) {

@@ -1,13 +1,13 @@
 package eurymachus.mts.items;
 
-import eurymachus.mts.core.MTSInit;
-import eurymachus.mts.tileentities.TileEntityMTSign;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class ItemMTSignTool extends Item {
 	public ItemMTSignTool(int i) {

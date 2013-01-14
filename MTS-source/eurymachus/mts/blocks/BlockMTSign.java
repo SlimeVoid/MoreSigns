@@ -2,15 +2,14 @@ package eurymachus.mts.blocks;
 
 import java.util.Random;
 
-import eurymachus.mts.core.MTSInit;
-import eurymachus.mts.core.MTSItemParts;
-
 import net.minecraft.block.BlockSign;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.EnumGameType;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.core.MTSItemParts;
 
 public class BlockMTSign extends BlockSign {
 

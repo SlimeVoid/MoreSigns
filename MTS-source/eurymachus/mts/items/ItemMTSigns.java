@@ -2,9 +2,6 @@ package eurymachus.mts.items;
 
 import java.util.List;
 
-import eurymachus.mts.core.MTSBlocks;
-import eurymachus.mts.core.MTSInit;
-import eurymachus.mts.tileentities.TileEntityMTSign;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import eurymachus.mts.core.MTSBlocks;
+import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class ItemMTSigns extends Item {
 	public ItemMTSigns(int i) {

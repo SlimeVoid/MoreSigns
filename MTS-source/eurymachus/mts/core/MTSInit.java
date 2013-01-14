@@ -2,14 +2,13 @@ package eurymachus.mts.core;
 
 import java.io.File;
 
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.Configuration;
 import slimevoid.lib.ICommonProxy;
 import slimevoid.lib.ICore;
 import slimevoid.lib.core.Core;
 import slimevoid.lib.core.SlimevoidCore;
-
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.Configuration;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class MTSInit {

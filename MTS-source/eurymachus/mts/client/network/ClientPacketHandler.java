@@ -1,12 +1,12 @@
 package eurymachus.mts.client.network;
 
-import slimevoid.lib.IPacketHandling;
-import slimevoid.lib.network.PacketTileEntity;
-import slimevoid.lib.network.PacketUpdate;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.src.ModLoader;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import slimevoid.lib.IPacketHandling;
+import slimevoid.lib.network.PacketTileEntity;
+import slimevoid.lib.network.PacketUpdate;
 import eurymachus.mts.client.guis.GuiEditMTSign;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 

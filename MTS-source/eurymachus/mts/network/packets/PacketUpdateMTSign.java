@@ -14,6 +14,7 @@ public class PacketUpdateMTSign extends PacketTileEntityMT {
 	public PacketUpdateMTSign(TileEntityMTSign tileentitymtsign) {
 		super(MTSInit.MTS.getModChannel(), tileentitymtsign);
 		this.payload = tileentitymtsign.getPacketPayload();
+		this.setCommand("MTSign");
 	}
 
 	public void setMtSignText(String[] signText) {

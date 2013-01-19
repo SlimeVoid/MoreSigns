@@ -14,6 +14,7 @@ public class PacketOpenGui extends PacketUpdate {
 	public PacketOpenGui(int x, int y, int z) {
 		this();
 		this.setPosition(x, y, z, 0);
+		this.setCommand("MTSignGui");
 	}
 
 	@Override

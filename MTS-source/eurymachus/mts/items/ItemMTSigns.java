@@ -25,6 +25,7 @@ public class ItemMTSigns extends Item {
 	}
 
 	private String[] signNames = new String[] {
+			"WoodenSign",
 			"IronSign",
 			"GoldSign",
 			"DiamondSign" };
@@ -44,16 +45,15 @@ public class ItemMTSigns extends Item {
 
 	@Override
 	public int getIconFromDamage(int i) {
-		int index = i;
 		switch (i) {
 		case 0:
-			return 16;
+			return 32;
 		case 1:
-			return 17;
+			return 16;
 		case 2:
-			return 18;
+			return 17;
 		default:
-			return 19;
+			return 18;
 		}
 	}
 
@@ -114,6 +114,7 @@ public class ItemMTSigns extends Item {
 		return MTSInit.MTS.getItemSheet();
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(int itemID, CreativeTabs creativeTabs, List list) {
 		for (int i = 0; i < this.signNames.length; i++) {

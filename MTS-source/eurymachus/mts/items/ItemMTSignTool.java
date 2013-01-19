@@ -14,7 +14,7 @@ public class ItemMTSignTool extends Item {
 		super(i);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(100);
-		this.iconIndex = 32;
+		this.iconIndex = 48;
 		this.setCreativeTab(CreativeTabs.tabTools);
 	}
 

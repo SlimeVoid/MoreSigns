@@ -28,6 +28,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(0));
 		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(1));
 		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(2));
+		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(3));
 	}
 
 	@Override

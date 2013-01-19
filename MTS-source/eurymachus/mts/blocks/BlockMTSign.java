@@ -4,17 +4,18 @@ import java.util.Random;
 
 import net.minecraft.block.BlockSign;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.EnumGameType;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import eurymachus.mts.core.MTSInit;
-import eurymachus.mts.core.MTSItemParts;
+import eurymachus.mts.core.MTSItemSigns;
 
 public class BlockMTSign extends BlockSign {
 
-	public BlockMTSign(int i, Class class1, boolean flag, float hardness, float resistance, boolean disableStats, boolean requiresSelfNotify) {
-		super(i, class1, flag);
+	public BlockMTSign(int i, Class<? extends TileEntity> signClass, boolean flag, float hardness, float resistance, boolean disableStats, boolean requiresSelfNotify) {
+		super(i, signClass, flag);
 
 		setHardness(hardness);
 		setResistance(resistance);
@@ -40,39 +41,26 @@ public class BlockMTSign extends BlockSign {
 	}
 
 	@Override
-	public void breakBlock(World world, int i, int j, int k, int l, int m) {
-		int itemDamage = -1;
-		switch (MTSInit.getDamageValue(world, i, j, k)) {
-		case 0:
-			itemDamage = 0;
-			break;
-		case 1:
-			itemDamage = 2;
-			break;
-		case 2:
-			itemDamage = 4;
-			break;
-		}
-		if (itemDamage > -1) {
-			if (world.getWorldInfo().getGameType() != EnumGameType.CREATIVE) {
-				ItemStack itemstack = MTSItemParts.getStack(itemDamage);
+	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x,
+			int y, int z) {
+		if (!world.isRemote) {
+			if (!player.capabilities.isCreativeMode) {
+				ItemStack itemstack = MTSItemSigns.getDroppedItem(MTSInit.getDamageValue(world, x, y, z));
 				if (itemstack != null) {
 					EntityItem entityitem = new EntityItem(
 							world,
-								i,
-								j,
-								k,
+								x,
+								y,
+								z,
 								new ItemStack(
 										itemstack.itemID,
 											1,
 											itemstack.getItemDamage()));
 					world.spawnEntityInWorld(entityitem);
 				}
-			} else {
-				return;
 			}
 		}
-		super.breakBlock(world, i, j, k, l, m);
+		return super.removeBlockByPlayer(world, player, x, y, z);
 	}
 
 	@Override

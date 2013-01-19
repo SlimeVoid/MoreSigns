@@ -2,12 +2,16 @@ package eurymachus.mts.core;
 
 import java.io.File;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.Configuration;
 import slimevoid.lib.ICommonProxy;
+import slimevoid.lib.core.BlockRemover;
+import slimevoid.lib.core.ItemRemover;
+import slimevoid.lib.core.RecipeRemover;
 import cpw.mods.fml.common.registry.GameRegistry;
 import eurymachus.mts.blocks.BlockMTSign;
 import eurymachus.mts.items.ItemMTSignParts;
@@ -29,6 +33,11 @@ public class MTSCore {
 
 	public static void addItems() {
 		MTSBlocks.mtSignPost.id = configurationProperties();
+		RecipeRemover.registerItemRecipeToRemove(Item.sign);
+		RecipeRemover.removeCrafting();
+		BlockRemover.removeVanillaBlock(Block.signPost);
+		BlockRemover.removeVanillaBlock(Block.signWall);
+		ItemRemover.removeVanillaItem(Item.sign);
 		MTSBlocks.mtSignPost.me = (new BlockMTSign(
 				MTSBlocks.mtSignPost.id,
 					TileEntityMTSign.class,
@@ -50,7 +59,7 @@ public class MTSCore {
 				MTSItems.mtsItemSignParts.offsetID()))
 				.setItemName("mtsItemSignParts");
 		MTSItems.mtsItemSigns.me = (new ItemMTSigns(
-				MTSItems.mtsItemSigns.offsetID())).setItemName("mtsItemSigns");
+				MTSItems.mtsItemSigns.getID())).setItemName("mtsItemSigns");
 		MTSItems.mtsItemSignTool.me = (new ItemMTSignTool(
 				MTSItems.mtsItemSignTool.offsetID()))
 				.setItemName("mtsItemSignTool");
@@ -63,11 +72,20 @@ public class MTSCore {
 		for (MTSItemSigns sign : MTSItemSigns.values()) {
 			sign.me = new ItemStack(MTSItems.mtsItemSigns.me, 1, sign.stackID);
 		}
+		setDroppedItems();
+	}
+
+	private static void setDroppedItems() {
+		MTSItemSigns.woodenSign.droppedItem = MTSItemSigns.woodenSign.me.splitStack(1);
+		MTSItemSigns.ironCladSign.droppedItem = MTSItemParts.ironCladPlating.me.splitStack(1);
+		MTSItemSigns.goldPlatedSign.droppedItem = MTSItemParts.goldPlating.me.splitStack(1);
+		MTSItemSigns.diamondLatheredSign.droppedItem = MTSItemParts.diamondPlating.me.splitStack(1);
 	}
 
 	public static void registerBlocks() {
 		for (MTSBlocks block : MTSBlocks.values()) {
 			if (block != null && block.me != null) {
+				System.out.println("Registering Block[" + block.name + "]");
 				GameRegistry.registerBlock(block.me, block.name);
 			}
 		}
@@ -179,6 +197,18 @@ public class MTSCore {
 						Character.valueOf('Y'),
 						MTSItemParts.diamondPole.me });
 
+
+		GameRegistry.addRecipe(
+				MTSItemSigns.woodenSign.me.splitStack(1),
+				new Object[] {
+						"XXX",
+						"XXX",
+						" Y ",
+						Character.valueOf('X'),
+						Block.planks,
+						Character.valueOf('Y'),
+						Item.stick });
+		
 		GameRegistry.addRecipe(
 				MTSItemSigns.ironCladSign.me.splitStack(1),
 				new Object[] {
@@ -188,7 +218,7 @@ public class MTSCore {
 						Character.valueOf('X'),
 						Item.ingotIron,
 						Character.valueOf('Y'),
-						Item.sign });
+						MTSItemSigns.woodenSign.me });
 
 		GameRegistry.addRecipe(
 				MTSItemSigns.goldPlatedSign.me.splitStack(1),
@@ -199,7 +229,7 @@ public class MTSCore {
 						Character.valueOf('X'),
 						Item.ingotGold,
 						Character.valueOf('Y'),
-						Item.sign });
+						MTSItemSigns.woodenSign.me });
 
 		GameRegistry.addRecipe(
 				MTSItemSigns.diamondLatheredSign.me.splitStack(1),
@@ -210,7 +240,7 @@ public class MTSCore {
 						Character.valueOf('X'),
 						Item.diamond,
 						Character.valueOf('Y'),
-						Item.sign });
+						MTSItemSigns.woodenSign.me });
 
 		FurnaceRecipes.smelting().addSmelting(
 				MTSItems.mtsItemSignParts.getID(),
@@ -245,16 +275,18 @@ public class MTSCore {
 
 	public static int configurationProperties() {
 		configuration.load();
-		MTSBlocks.mtSignPost.id = Integer.parseInt(configuration.get(
-				Configuration.CATEGORY_BLOCK,
-				"mtSignPost",
-				213).value);
+		MTSBlocks.mtSignPost.id = //Integer.parseInt(configuration.get(
+				//Configuration.CATEGORY_BLOCK,
+				//"mtSignPost",
+				Block.signPost.blockID;
+				//).value);
 		MTSBlocks.mtSignPost.name = "Multi-Textured Sign-Post";
 
-		MTSBlocks.mtSignWall.id = Integer.parseInt(configuration.get(
-				Configuration.CATEGORY_BLOCK,
-				"mtSignWall",
-				212).value);
+		MTSBlocks.mtSignWall.id = //Integer.parseInt(configuration.get(
+				//Configuration.CATEGORY_BLOCK,
+				//"mtSignWall",
+				Block.signWall.blockID;
+				//).value);
 		MTSBlocks.mtSignWall.name = "Multi-Textured Wall-Sign";
 
 		MTSItems.mtsItemSignParts.setID(Integer.parseInt(configuration.get(
@@ -263,16 +295,18 @@ public class MTSCore {
 				7000).value));
 		MTSItems.mtsItemSignParts.name = "Multi-Textured Sign Part";
 
-		MTSItems.mtsItemSigns.setID(Integer.parseInt(configuration.get(
-				Configuration.CATEGORY_ITEM,
-				"mtSign",
-				7001).value));
+		MTSItems.mtsItemSigns.setID(
+				//Integer.parseInt(configuration.get(
+				//Configuration.CATEGORY_ITEM,
+				//"mtSign",
+				Item.sign.itemID);
+				//.value));
 		MTSItems.mtsItemSigns.name = "Multi-Textured Sign";
 
 		MTSItems.mtsItemSignTool.setID(Integer.parseInt(configuration.get(
 				Configuration.CATEGORY_ITEM,
 				"mtSignTool",
-				7002).value));
+				7001).value));
 		MTSItems.mtsItemSignTool.name = "Multi-Textured Sign Wand";
 
 		MTSItemParts.ironCladPlating.name = "Iron-Clad Plating";
@@ -287,12 +321,14 @@ public class MTSCore {
 		MTSItemParts.diamondPlating.stackID = 4;
 		MTSItemParts.diamondPole.name = "Diamond-Encrusted Pole";
 		MTSItemParts.diamondPole.stackID = 5;
+		MTSItemSigns.woodenSign.name = "Wooden Sign";
+		MTSItemSigns.woodenSign.stackID = 0;
 		MTSItemSigns.ironCladSign.name = "Iron-Clad Sign";
-		MTSItemSigns.ironCladSign.stackID = 0;
+		MTSItemSigns.ironCladSign.stackID = 1;
 		MTSItemSigns.goldPlatedSign.name = "Gold-Plated Sign";
-		MTSItemSigns.goldPlatedSign.stackID = 1;
+		MTSItemSigns.goldPlatedSign.stackID = 2;
 		MTSItemSigns.diamondLatheredSign.name = "Diamond-Lathered Sign";
-		MTSItemSigns.diamondLatheredSign.stackID = 2;
+		MTSItemSigns.diamondLatheredSign.stackID = 3;
 
 		configuration.save();
 		return MTSBlocks.mtSignPost.id;

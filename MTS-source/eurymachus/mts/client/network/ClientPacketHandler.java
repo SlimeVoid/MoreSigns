@@ -39,6 +39,5 @@ public class ClientPacketHandler implements IPacketHandling {
 	}
 
 	@Override
-	public void handlePacket(PacketUpdate packet, EntityPlayer entityplayer, World world) {
-	}
+	public void handlePacket(PacketUpdate packet, EntityPlayer entityplayer, World world) {}
 }

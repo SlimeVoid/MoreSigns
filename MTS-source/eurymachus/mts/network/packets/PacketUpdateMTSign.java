@@ -5,7 +5,6 @@ import eurymachus.mts.core.MTSInit;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class PacketUpdateMTSign extends PacketTileEntityMT {
-	private String[] signLines;
 
 	public PacketUpdateMTSign() {
 		super(MTSInit.MTS.getModChannel());

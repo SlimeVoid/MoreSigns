@@ -29,6 +29,7 @@ public class GuiEditMTSign extends GuiScreen {
 		mtsEntitySign = mtstileentitysign;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
 		controlList.clear();

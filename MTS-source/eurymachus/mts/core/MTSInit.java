@@ -15,6 +15,7 @@ public class MTSInit {
 	public static ICore MTS;
 	public static boolean initialized = false;
 
+	public static String woodenSign = "/item/sign.png";
 	public static String ironSign = "item/mtsIronSign.png";
 	public static String goldSign = "item/mtsGoldSign.png";
 	public static String diamondSign = "item/mtsDiamondSign.png";
@@ -22,10 +23,12 @@ public class MTSInit {
 	public static String getSignTexture(int textureData) {
 		switch (textureData) {
 		case 0:
-			return MTS.getModDir() + ironSign;
+			return woodenSign;
 		case 1:
-			return MTS.getModDir() + goldSign;
+			return MTS.getModDir() + ironSign;
 		case 2:
+			return MTS.getModDir() + goldSign;
+		case 3:
 			return MTS.getModDir() + diamondSign;
 		default:
 			return MTS.getModDir() + ironSign;

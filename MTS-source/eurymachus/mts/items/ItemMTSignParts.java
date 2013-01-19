@@ -53,6 +53,7 @@ public class ItemMTSignParts extends Item {
 		return MTSInit.MTS.getItemSheet();
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(int itemID, CreativeTabs creativeTabs, List list) {
 		for (int i = 0; i < this.signParts.length; i++) {

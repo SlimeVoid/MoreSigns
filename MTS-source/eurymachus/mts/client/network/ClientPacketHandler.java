@@ -5,9 +5,9 @@ import net.minecraft.src.ModLoader;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import slimevoid.lib.IPacketHandling;
+import slimevoid.lib.core.SlimevoidHelper;
 import slimevoid.lib.network.PacketTileEntity;
 import slimevoid.lib.network.PacketUpdate;
-import slimevoid.littleblocks.api.util.LittleBlocksHelper;
 import eurymachus.mts.client.guis.GuiEditMTSign;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
@@ -25,7 +25,7 @@ public class ClientPacketHandler implements IPacketHandling {
 
 	@Override
 	public void handleGuiPacket(PacketUpdate packet, EntityPlayer entityplayer, World world) {
-		TileEntity tileentity = LittleBlocksHelper
+		TileEntity tileentity = SlimevoidHelper
 				.getBlockTileEntity(
 						world,
 						packet.xPosition,

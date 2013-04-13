@@ -23,12 +23,12 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderInformation() {
-		MinecraftForgeClient.preloadTexture(MTSInit.MTS.getBlockSheet());
+		/*MinecraftForgeClient.preloadTexture(MTSInit.MTS.getBlockSheet());
 		MinecraftForgeClient.preloadTexture(MTSInit.MTS.getItemSheet());
 		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(0));
 		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(1));
 		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(2));
-		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(3));
+		MinecraftForgeClient.preloadTexture(MTSInit.getSignTexture(3));*/
 	}
 
 	@Override

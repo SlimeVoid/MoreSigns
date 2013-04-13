@@ -2,12 +2,29 @@ package eurymachus.mts.items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.core.lib.IconLib;
 
 public class ItemMTSignParts extends Item {
+	
+	protected Icon[] iconList;
+	
+	@Override
+	public void updateIcons(IconRegister iconRegister) {
+		iconList = new Icon[6];
+		iconList[0] = iconRegister.registerIcon(IconLib.ICON_PART_PLATE_IRON);
+		iconList[2] = iconRegister.registerIcon(IconLib.ICON_PART_PLATE_GOLD);
+		iconList[4] = iconRegister.registerIcon(IconLib.ICON_PART_PLATE_DIAMOND);
+		iconList[1] = iconRegister.registerIcon(IconLib.ICON_PART_POLE_IRON);
+		iconList[3] = iconRegister.registerIcon(IconLib.ICON_PART_POLE_GOLD);
+		iconList[5] = iconRegister.registerIcon(IconLib.ICON_PART_POLE_DIAMOND);
+	}
+	
 	public ItemMTSignParts(int i) {
 		super(i);
 		this.setHasSubtypes(true);
@@ -25,9 +42,9 @@ public class ItemMTSignParts extends Item {
 			"DiamondPole" };
 
 	@Override
-	public String getItemNameIS(ItemStack itemstack) {
+	public String getItemDisplayName(ItemStack itemstack) {
 		return (new StringBuilder())
-				.append(super.getItemName())
+				.append(super.getUnlocalizedName())
 					.append(".")
 					.append(signParts[itemstack.getItemDamage()])
 					.toString();
@@ -38,19 +55,14 @@ public class ItemMTSignParts extends Item {
 	}
 
 	@Override
-	public int getIconFromDamage(int i) {
+	public Icon getIconFromDamage(int i) {
 		if (i == 0 || i == 2 || i == 4) {
 			setMaxStackSize(16);
 		}
 		if (i == 1 || i == 3 || i == 5) {
 			setMaxStackSize(8);
 		}
-		return i;
-	}
-
-	@Override
-	public String getTextureFile() {
-		return MTSInit.MTS.getItemSheet();
+		return iconList[i];
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

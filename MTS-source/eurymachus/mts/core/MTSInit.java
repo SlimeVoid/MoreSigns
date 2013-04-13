@@ -15,23 +15,24 @@ public class MTSInit {
 	public static ICore MTS;
 	public static boolean initialized = false;
 
-	public static String woodenSign = "/item/sign.png";
-	public static String ironSign = "item/mtsIronSign.png";
-	public static String goldSign = "item/mtsGoldSign.png";
-	public static String diamondSign = "item/mtsDiamondSign.png";
+	private static final String BLOCK_PREFIX = "/mods/mts/textures/blocks/";
+	public static String woodenSign = 	"/item/sign.png";
+	public static String ironSign = 	BLOCK_PREFIX + "mtsIronSign.png";
+	public static String goldSign = 	BLOCK_PREFIX + "mtsGoldSign.png";
+	public static String diamondSign = 	BLOCK_PREFIX + "mtsDiamondSign.png";
 
 	public static String getSignTexture(int textureData) {
 		switch (textureData) {
 		case 0:
 			return woodenSign;
 		case 1:
-			return MTS.getModDir() + ironSign;
+			return ironSign;
 		case 2:
-			return MTS.getModDir() + goldSign;
+			return goldSign;
 		case 3:
-			return MTS.getModDir() + diamondSign;
+			return diamondSign;
 		default:
-			return MTS.getModDir() + ironSign;
+			return ironSign;
 		}
 	}
 

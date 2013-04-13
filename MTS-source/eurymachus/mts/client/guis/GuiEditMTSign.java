@@ -11,6 +11,8 @@ import net.minecraft.util.ChatAllowedCharacters;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+
 import eurymachus.mts.core.MTSBlocks;
 import eurymachus.mts.network.packets.PacketUpdateMTSign;
 import eurymachus.mts.tileentities.TileEntityMTSign;
@@ -32,9 +34,9 @@ public class GuiEditMTSign extends GuiScreen {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
-		controlList.clear();
+		buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
-		controlList.add(new GuiButton(
+		buttonList.add(new GuiButton(
 				0,
 					width / 2 - 100,
 					height / 4 + 120,
@@ -44,7 +46,7 @@ public class GuiEditMTSign extends GuiScreen {
 	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
-		mc.getSendQueue().addToSendQueue(
+		PacketDispatcher.sendPacketToServer(
 				new PacketUpdateMTSign(mtsEntitySign).getPacket());
 	}
 

@@ -45,7 +45,7 @@ public class MTSCore {
 					1F,
 					2F,
 					true,
-					true)).setBlockName("mtSignPost");
+					true)).setUnlocalizedName("mtSignPost");
 		MTSBlocks.mtSignWall.me = (new BlockMTSign(
 				MTSBlocks.mtSignWall.id,
 					TileEntityMTSign.class,
@@ -53,16 +53,16 @@ public class MTSCore {
 					1F,
 					2F,
 					true,
-					true)).setBlockName("mtSignWall");
+					true)).setUnlocalizedName("mtSignWall");
 		GameRegistry.registerTileEntity(TileEntityMTSign.class, "mtSign");
 		MTSItems.mtsItemSignParts.me = (new ItemMTSignParts(
 				MTSItems.mtsItemSignParts.offsetID()))
-				.setItemName("mtsItemSignParts");
+				.setUnlocalizedName("mtsItemSignParts");
 		MTSItems.mtsItemSigns.me = (new ItemMTSigns(
-				MTSItems.mtsItemSigns.getID())).setItemName("mtsItemSigns");
+				MTSItems.mtsItemSigns.getID())).setUnlocalizedName("mtsItemSigns");
 		MTSItems.mtsItemSignTool.me = (new ItemMTSignTool(
 				MTSItems.mtsItemSignTool.offsetID()))
-				.setItemName("mtsItemSignTool");
+				.setUnlocalizedName("mtsItemSignTool");
 		for (MTSItemParts part : MTSItemParts.values()) {
 			part.me = new ItemStack(
 					MTSItems.mtsItemSignParts.me,
@@ -289,10 +289,10 @@ public class MTSCore {
 				//).value);
 		MTSBlocks.mtSignWall.name = "Multi-Textured Wall-Sign";
 
-		MTSItems.mtsItemSignParts.setID(Integer.parseInt(configuration.get(
+		MTSItems.mtsItemSignParts.setID(configuration.get(
 				Configuration.CATEGORY_ITEM,
 				"mtSignParts",
-				7000).value));
+				7000).getInt());
 		MTSItems.mtsItemSignParts.name = "Multi-Textured Sign Part";
 
 		MTSItems.mtsItemSigns.setID(
@@ -303,10 +303,10 @@ public class MTSCore {
 				//.value));
 		MTSItems.mtsItemSigns.name = "Multi-Textured Sign";
 
-		MTSItems.mtsItemSignTool.setID(Integer.parseInt(configuration.get(
+		MTSItems.mtsItemSignTool.setID(configuration.get(
 				Configuration.CATEGORY_ITEM,
 				"mtSignTool",
-				7001).value));
+				7001).getInt());
 		MTSItems.mtsItemSignTool.name = "Multi-Textured Sign Wand";
 
 		MTSItemParts.ironCladPlating.name = "Iron-Clad Plating";

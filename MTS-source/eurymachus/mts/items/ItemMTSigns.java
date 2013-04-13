@@ -2,19 +2,35 @@ package eurymachus.mts.items;
 
 import java.util.List;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import eurymachus.mts.core.MTSBlocks;
 import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.core.lib.IconLib;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class ItemMTSigns extends Item {
+	
+	protected Icon[] iconList;
+	
+	public void updateIcons(IconRegister iconRegister) {
+		iconList = new Icon[4];
+		iconList[0] = iconRegister.registerIcon(IconLib.ICON_SIGN_WOOD);
+		iconList[1] = iconRegister.registerIcon(IconLib.ICON_SIGN_IRON);
+		iconList[2] = iconRegister.registerIcon(IconLib.ICON_SIGN_GOLD);
+		iconList[3] = iconRegister.registerIcon(IconLib.ICON_SIGN_DIAMOND);
+	}
+	
 	public ItemMTSigns(int i) {
 		super(i);
 		this.setHasSubtypes(true);
@@ -31,9 +47,9 @@ public class ItemMTSigns extends Item {
 			"DiamondSign" };
 
 	@Override
-	public String getItemNameIS(ItemStack itemstack) {
+	public String getItemDisplayName(ItemStack itemstack) {
 		return (new StringBuilder())
-				.append(super.getItemName())
+				.append(super.getUnlocalizedName())
 					.append(".")
 					.append(signNames[itemstack.getItemDamage()])
 					.toString();
@@ -44,16 +60,12 @@ public class ItemMTSigns extends Item {
 	}
 
 	@Override
-	public int getIconFromDamage(int i) {
-		switch (i) {
-		case 0:
-			return 32;
-		case 1:
-			return 16;
-		case 2:
-			return 17;
-		default:
-			return 18;
+	public Icon getIconFromDamage(int i) {
+		try {
+			return iconList[i];
+		} catch (Exception e) {
+			FMLCommonHandler.instance().getFMLLogger().severe("No Such Sign");
+			return this.iconIndex;
 		}
 	}
 
@@ -91,9 +103,9 @@ public class ItemMTSigns extends Item {
 		if (l == 1) {
 			int i1 = MathHelper
 					.floor_double((((entityplayer.rotationYaw + 180F) * 16F) / 360F) + 0.5D) & 0xf;
-			world.setBlockAndMetadataWithNotify(i, j, k, signpost.blockID, i1);
+			world.setBlock(i, j, k, signpost.blockID, i1, 0x02);
 		} else {
-			world.setBlockAndMetadataWithNotify(i, j, k, wallsign.blockID, l);
+			world.setBlock(i, j, k, wallsign.blockID, l, 0x02);
 		}
 		itemstack.stackSize--;
 		TileEntity tileentity = world.getBlockTileEntity(i, j, k);
@@ -107,11 +119,6 @@ public class ItemMTSigns extends Item {
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public String getTextureFile() {
-		return MTSInit.MTS.getItemSheet();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

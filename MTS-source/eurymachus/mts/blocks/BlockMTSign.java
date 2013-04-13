@@ -3,10 +3,12 @@ package eurymachus.mts.blocks;
 import java.util.Random;
 
 import net.minecraft.block.BlockSign;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import eurymachus.mts.core.MTSInit;
@@ -14,6 +16,13 @@ import eurymachus.mts.core.MTSItemSigns;
 
 public class BlockMTSign extends BlockSign {
 
+/*	protected Icon[] iconList;
+	
+	@Override
+	public void registerIcons(IconRegister iconRegister) {
+		iconList = new Icon[4];
+	}*/
+	
 	public BlockMTSign(int i, Class<? extends TileEntity> signClass, boolean flag, float hardness, float resistance, boolean disableStats, boolean requiresSelfNotify) {
 		super(i, signClass, flag);
 
@@ -21,19 +30,19 @@ public class BlockMTSign extends BlockSign {
 		setResistance(resistance);
 		if (disableStats)
 			disableStats();
-		if (requiresSelfNotify)
-			setRequiresSelfNotify();
+		//if (requiresSelfNotify)
+			//setRequiresSelfNotify();
+	}
+
+/*	@Override
+	public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
+		return iconList[MTSInit.getDamageValue(par1IBlockAccess, par2, par3, par4)];
 	}
 
 	@Override
-	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return MTSInit.getDamageValue(par1IBlockAccess, par2, par3, par4);
-	}
-
-	@Override
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		return MTSInit.MTS.getProxy().getBlockTextureFromMetadata(par2);
-	}
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return iconList[MTSInit.MTS.getProxy().getBlockTextureFromMetadata(par2)];
+	}*/
 
 	@Override
 	public int quantityDropped(Random rand) {
@@ -61,10 +70,5 @@ public class BlockMTSign extends BlockSign {
 			}
 		}
 		return super.removeBlockByPlayer(world, player, x, y, z);
-	}
-
-	@Override
-	public String getTextureFile() {
-		return MTSInit.MTS.getBlockSheet();
 	}
 }

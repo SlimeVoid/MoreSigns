@@ -65,7 +65,7 @@ public class ItemMTSigns extends Item {
 			return iconList[i];
 		} catch (Exception e) {
 			FMLCommonHandler.instance().getFMLLogger().severe("No Such Sign");
-			return this.iconIndex;
+			return this.itemIcon;
 		}
 	}
 

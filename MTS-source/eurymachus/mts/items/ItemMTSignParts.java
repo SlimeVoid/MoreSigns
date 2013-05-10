@@ -15,7 +15,7 @@ public class ItemMTSignParts extends Item {
 	protected Icon[] iconList;
 	
 	@Override
-	public void updateIcons(IconRegister iconRegister) {
+	public void registerIcons(IconRegister iconRegister) {
 		iconList = new Icon[6];
 		iconList[0] = iconRegister.registerIcon(IconLib.ICON_PART_PLATE_IRON);
 		iconList[2] = iconRegister.registerIcon(IconLib.ICON_PART_PLATE_GOLD);

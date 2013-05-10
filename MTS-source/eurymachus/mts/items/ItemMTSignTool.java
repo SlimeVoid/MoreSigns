@@ -14,8 +14,8 @@ import eurymachus.mts.tileentities.TileEntityMTSign;
 public class ItemMTSignTool extends Item {
 	
 	@Override
-	public void updateIcons(IconRegister iconRegister) {
-		this.iconIndex = iconRegister.registerIcon(IconLib.ICON_SIGN_TOOL);
+	public void registerIcons(IconRegister iconRegister) {
+		this.itemIcon = iconRegister.registerIcon(IconLib.ICON_SIGN_TOOL);
 	}
 	
 	public ItemMTSignTool(int i) {

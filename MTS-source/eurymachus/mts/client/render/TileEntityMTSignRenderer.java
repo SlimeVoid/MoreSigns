@@ -4,11 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import eurymachus.mts.core.MTSBlocks;
 import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.core.lib.BlockLib;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class TileEntityMTSignRenderer extends TileEntitySpecialRenderer {
@@ -18,7 +20,7 @@ public class TileEntityMTSignRenderer extends TileEntitySpecialRenderer {
 		mtsSignModel = new MTSignModel();
 	}
 
-	public void renderTileEntitySignAt(TileEntityMTSign mtstileentitysign, double d, double d1, double d2, float f, String texturePath) {
+	public void renderTileEntitySignAt(TileEntityMTSign mtstileentitysign, double d, double d1, double d2, float f, ResourceLocation texture) {
 		Block block = mtstileentitysign.getBlockType();
 		GL11.glPushMatrix();
 		float f1 = 0.6666667F;
@@ -50,7 +52,7 @@ public class TileEntityMTSignRenderer extends TileEntitySpecialRenderer {
 			GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
 			mtsSignModel.mtsSignStick.showModel = false;
 		}
-		bindTextureByName(texturePath);
+		this.func_110628_a(texture);
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
 		mtsSignModel.renderSign();
@@ -94,14 +96,15 @@ public class TileEntityMTSignRenderer extends TileEntitySpecialRenderer {
 		if (mtstileentity instanceof TileEntityMTSign) {
 			TileEntityMTSign mtstileentitysign = (TileEntityMTSign) mtstileentity;
 			if (mtstileentitysign != null) {
+				ResourceLocation signTexture = BlockLib.getSignTexture(mtstileentitysign
+						.getTextureValue());
 				renderTileEntitySignAt(
 						mtstileentitysign,
 						d,
 						d1,
 						d2,
 						f,
-						MTSInit.getSignTexture(mtstileentitysign
-								.getTextureValue()));
+						signTexture);
 			}
 		}
 	}

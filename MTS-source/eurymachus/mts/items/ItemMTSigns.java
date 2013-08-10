@@ -15,15 +15,17 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import eurymachus.mts.core.MTSBlocks;
-import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.core.MultiTexturedSigns;
 import eurymachus.mts.core.lib.IconLib;
+import eurymachus.mts.core.lib.ItemLib;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class ItemMTSigns extends Item {
 	
 	protected Icon[] iconList;
 	
-	public void updateIcons(IconRegister iconRegister) {
+	@Override
+	public void registerIcons(IconRegister iconRegister) {
 		iconList = new Icon[4];
 		iconList[0] = iconRegister.registerIcon(IconLib.ICON_SIGN_WOOD);
 		iconList[1] = iconRegister.registerIcon(IconLib.ICON_SIGN_IRON);
@@ -41,10 +43,10 @@ public class ItemMTSigns extends Item {
 	}
 
 	private String[] signNames = new String[] {
-			"WoodenSign",
-			"IronSign",
-			"GoldSign",
-			"DiamondSign" };
+			ItemLib.SIGN_WOODEN,
+			ItemLib.SIGN_IRON,
+			ItemLib.SIGN_GOLD,
+			ItemLib.SIGN_DIAMOND };
 
 	@Override
 	public String getItemDisplayName(ItemStack itemstack) {
@@ -113,7 +115,7 @@ public class ItemMTSigns extends Item {
 			TileEntityMTSign tileentitymtsign = (TileEntityMTSign) tileentity;
 			tileentitymtsign.setTextureValue(itemstack.getItemDamage());
 			tileentitymtsign.onInventoryChanged();
-			MTSInit.MTS.getProxy().displayTileEntityGui(
+			MultiTexturedSigns.proxy.displayTileEntityGui(
 					entityplayer,
 					tileentitymtsign);
 			return true;

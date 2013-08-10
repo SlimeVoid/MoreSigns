@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import eurymachus.mts.core.MTSInit;
 import eurymachus.mts.core.lib.IconLib;
+import eurymachus.mts.core.lib.ItemLib;
 
 public class ItemMTSignParts extends Item {
 	
@@ -34,12 +35,12 @@ public class ItemMTSignParts extends Item {
 	}
 
 	private String[] signParts = new String[] {
-			"IronPlating",
-			"IronPole",
-			"GoldPlating",
-			"GoldenPole",
-			"DiamondPlating",
-			"DiamondPole" };
+			ItemLib.PLATE_IRON,
+			ItemLib.POLE_IRON,
+			ItemLib.PLATE_GOLD,
+			ItemLib.POLE_IRON,
+			ItemLib.PLATE_DIAMOND,
+			ItemLib.POLE_DIAMOND };
 
 	@Override
 	public String getItemDisplayName(ItemStack itemstack) {

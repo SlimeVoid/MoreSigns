@@ -1,19 +1,20 @@
 package eurymachus.mts.network.packets;
 
-import slimevoid.lib.network.PacketTileEntityMT;
-import eurymachus.mts.core.MTSInit;
+import slimevoidlib.network.PacketTileEntityMT;
+import eurymachus.mts.core.lib.CommandLib;
+import eurymachus.mts.core.lib.CoreLib;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class PacketUpdateMTSign extends PacketTileEntityMT {
 
 	public PacketUpdateMTSign() {
-		super(MTSInit.MTS.getModChannel());
+		super(CoreLib.MOD_CHANNEL);
 	}
 
 	public PacketUpdateMTSign(TileEntityMTSign tileentitymtsign) {
-		super(MTSInit.MTS.getModChannel(), tileentitymtsign);
+		super(CoreLib.MOD_CHANNEL, tileentitymtsign);
 		this.payload = tileentitymtsign.getPacketPayload();
-		this.setCommand("MTSign");
+		this.setCommand(CommandLib.SIGN_UPDATE);
 	}
 
 	public void setMtSignText(String[] signText) {

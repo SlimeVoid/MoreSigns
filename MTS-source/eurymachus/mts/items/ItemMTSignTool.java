@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import eurymachus.mts.core.MTSInit;
+import eurymachus.mts.core.MultiTexturedSigns;
 import eurymachus.mts.core.lib.IconLib;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
@@ -33,7 +33,7 @@ public class ItemMTSignTool extends Item {
 			TileEntity tileentity = world.getBlockTileEntity(i, j, k);
 			if (tileentity != null && tileentity instanceof TileEntityMTSign) {
 				TileEntityMTSign tileentitymtsign = (TileEntityMTSign) tileentity;
-				MTSInit.MTS.getProxy().displayTileEntityGui(
+				MultiTexturedSigns.proxy.displayTileEntityGui(
 						entityplayer,
 						tileentitymtsign);
 				itemstack.damageItem(5, entityplayer);

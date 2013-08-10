@@ -5,63 +5,36 @@ import java.io.File;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.Configuration;
-import slimevoid.lib.ICommonProxy;
-import slimevoid.lib.ICore;
-import slimevoid.lib.core.Core;
-import slimevoid.lib.core.SlimevoidCore;
+import slimevoidlib.ICommonProxy;
+import slimevoidlib.core.SlimevoidCore;
+import slimevoidlib.core.SlimevoidLib;
+import eurymachus.mts.core.lib.CoreLib;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 
 public class MTSInit {
-	public static ICore MTS;
 	public static boolean initialized = false;
 
-	private static final String BLOCK_PREFIX = "/mods/mts/textures/blocks/";
-	public static String woodenSign = 	"/item/sign.png";
-	public static String ironSign = 	BLOCK_PREFIX + "mtsIronSign.png";
-	public static String goldSign = 	BLOCK_PREFIX + "mtsGoldSign.png";
-	public static String diamondSign = 	BLOCK_PREFIX + "mtsDiamondSign.png";
-
-	public static String getSignTexture(int textureData) {
-		switch (textureData) {
-		case 0:
-			return woodenSign;
-		case 1:
-			return ironSign;
-		case 2:
-			return goldSign;
-		case 3:
-			return diamondSign;
-		default:
-			return ironSign;
-		}
-	}
-
-	public static void initialize(ICommonProxy proxy) {
+	public static void initialize() {
 		if (initialized)
 			return;
 		initialized = true;
-		MTS = new Core(proxy);
-		MTS.setModName("MultiTexturedSigns");
-		MTS.setModChannel("MTS");
 		MTSCore.configFile = new File(
-				MTSInit.MTS.getProxy().getMinecraftDir(),
-					"config/MultiTexturedSigns.cfg");
+				SlimevoidLib.proxy.getMinecraftDir(),
+					"config/MoreSigns.cfg");
 		MTSCore.configuration = new Configuration(MTSCore.configFile);
 		load();
 	}
 
 	public static void load() {
-		SlimevoidCore.console(MTS.getModName(), "Registering items...");
+		SlimevoidCore.console(CoreLib.MOD_ID, "Registering items...");
 		MTSCore.addItems();
-		SlimevoidCore.console(MTS.getModName(), "Registering blocks...");
+		SlimevoidCore.console(CoreLib.MOD_ID, "Registering blocks...");
 		MTSCore.registerBlocks();
-		MTS.getProxy().registerRenderInformation();
-		MTS
-				.getProxy()
-					.registerTileEntitySpecialRenderer(TileEntityMTSign.class);
-		SlimevoidCore.console(MTS.getModName(), "Naming items...");
+		MultiTexturedSigns.proxy.registerRenderInformation();
+		MultiTexturedSigns.proxy.registerTileEntitySpecialRenderer(TileEntityMTSign.class);
+		SlimevoidCore.console(CoreLib.MOD_ID, "Naming items...");
 		MTSCore.addItemNames();
-		SlimevoidCore.console(MTS.getModName(), "Registering recipes...");
+		SlimevoidCore.console(CoreLib.MOD_ID, "Registering recipes...");
 		MTSCore.addRecipes();
 	}
 

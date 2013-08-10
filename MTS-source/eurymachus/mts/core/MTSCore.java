@@ -6,14 +6,15 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.Configuration;
-import slimevoid.lib.ICommonProxy;
-import slimevoid.lib.util.BlockRemover;
-import slimevoid.lib.util.ItemRemover;
-import slimevoid.lib.util.RecipeRemover;
+import slimevoidlib.util.BlockRemover;
+import slimevoidlib.util.ItemRemover;
+import slimevoidlib.util.RecipeRemover;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import eurymachus.mts.blocks.BlockMTSign;
+import eurymachus.mts.core.lib.ItemLib;
+import eurymachus.mts.core.lib.LocalizationLib;
 import eurymachus.mts.items.ItemMTSignParts;
 import eurymachus.mts.items.ItemMTSignTool;
 import eurymachus.mts.items.ItemMTSigns;
@@ -24,11 +25,11 @@ public class MTSCore {
 	public static Configuration configuration;
 	public static boolean initialized = false;
 
-	public static void initialize(ICommonProxy proxy) {
+	public static void initialize() {
 		if (initialized)
 			return;
 		initialized = true;
-		MTSInit.initialize(proxy);
+		MTSInit.initialize();
 	}
 
 	public static void addItems() {
@@ -57,12 +58,12 @@ public class MTSCore {
 		GameRegistry.registerTileEntity(TileEntityMTSign.class, "mtSign");
 		MTSItems.mtsItemSignParts.me = (new ItemMTSignParts(
 				MTSItems.mtsItemSignParts.offsetID()))
-				.setUnlocalizedName("mtsItemSignParts");
+				.setUnlocalizedName(ItemLib.PART_PREFIX);
 		MTSItems.mtsItemSigns.me = (new ItemMTSigns(
-				MTSItems.mtsItemSigns.getID())).setUnlocalizedName("mtsItemSigns");
+				MTSItems.mtsItemSigns.getID())).setUnlocalizedName(ItemLib.SIGN_PREFIX);
 		MTSItems.mtsItemSignTool.me = (new ItemMTSignTool(
 				MTSItems.mtsItemSignTool.offsetID()))
-				.setUnlocalizedName("mtsItemSignTool");
+				.setUnlocalizedName(ItemLib.TOOL_PREFIX);
 		for (MTSItemParts part : MTSItemParts.values()) {
 			part.me = new ItemStack(
 					MTSItems.mtsItemSignParts.me,
@@ -92,21 +93,22 @@ public class MTSCore {
 	}
 
 	public static void addItemNames() {
-		for (MTSItems item : MTSItems.values()) {
+/*		for (MTSItems item : MTSItems.values()) {
 			if (item != null && item.me != null && item.name != null) {
-				ModLoader.addName(item.me, item.name);
+				LanguageRegistry.addName(item.me, item.name);
 			}
 		}
 		for (MTSItemParts part : MTSItemParts.values()) {
 			if (part != null && part.me != null && part.name != null) {
-				ModLoader.addName(part.me, part.name);
+				LanguageRegistry.addName(part.me, part.name);
 			}
 		}
 		for (MTSItemSigns sign : MTSItemSigns.values()) {
 			if (sign != null && sign.me != null && sign.name != null) {
-				ModLoader.addName(sign.me, sign.name);
+				LanguageRegistry.addName(sign.me, sign.name);
 			}
-		}
+		}*/
+		LocalizationLib.registerLanguages();
 	}
 
 	public static void addRecipes() {

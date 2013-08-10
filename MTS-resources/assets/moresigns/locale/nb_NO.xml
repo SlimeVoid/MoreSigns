@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
-	<comment>English (US) Localization File</comment>
-    <entry key="item.ms.sign.wood.name">Wooden Sign</entry>
+	<comment>Norsk Localization File</comment>
+	<entry key="item.ms.sign.wood.name">Wooden Sign</entry>
 	<entry key="item.ms.sign.iron.name">Iron Sign</entry>
 	<entry key="item.ms.sign.gold.name">Gold Sign</entry>
 	<entry key="item.ms.sign.diamond.name">Diamond Sign</entry>

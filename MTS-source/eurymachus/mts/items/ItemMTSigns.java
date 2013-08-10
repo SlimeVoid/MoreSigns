@@ -49,7 +49,7 @@ public class ItemMTSigns extends Item {
 			ItemLib.SIGN_DIAMOND };
 
 	@Override
-	public String getItemDisplayName(ItemStack itemstack) {
+	public String getUnlocalizedName(ItemStack itemstack) {
 		return (new StringBuilder())
 				.append(super.getUnlocalizedName())
 					.append(".")

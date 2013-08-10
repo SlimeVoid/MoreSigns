@@ -43,7 +43,7 @@ public class ItemMTSignParts extends Item {
 			ItemLib.POLE_DIAMOND };
 
 	@Override
-	public String getItemDisplayName(ItemStack itemstack) {
+	public String getUnlocalizedName(ItemStack itemstack) {
 		return (new StringBuilder())
 				.append(super.getUnlocalizedName())
 					.append(".")

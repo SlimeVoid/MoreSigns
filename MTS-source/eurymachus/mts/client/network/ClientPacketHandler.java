@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import slimevoidlib.IPacketHandling;
 import slimevoidlib.network.PacketTileEntity;
 import slimevoidlib.network.PacketUpdate;
-import slimevoidlib.util.SlimevoidHelper;
+import slimevoidlib.util.helpers.SlimevoidHelper;
 import eurymachus.mts.client.guis.GuiEditMTSign;
 import eurymachus.mts.tileentities.TileEntityMTSign;
 

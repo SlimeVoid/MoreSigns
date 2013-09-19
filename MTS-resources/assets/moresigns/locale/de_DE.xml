@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<comment>German (DE) Localization File</comment>
+	<entry key="item.ms.sign.wood.name">Hölzernes Schild</entry>
+	<entry key="item.ms.sign.iron.name">Eisenschild</entry>
+	<entry key="item.ms.sign.gold.name">Goldschild</entry>
+	<entry key="item.ms.sign.diamond.name">Diamantschild</entry>
+	<entry key="item.ms.part.pole.iron.name">Eisenstange</entry>
+	<entry key="item.ms.part.pole.gold.name">Goldstange</entry>
+	<entry key="item.ms.part.pole.diamond.name">Diamantstange</entry>
+	<entry key="item.ms.part.plate.iron.name">Eisenplatte</entry>
+	<entry key="item.ms.part.plate.gold.name">Goldplatte</entry>
+	<entry key="item.ms.part.plate.diamond.name">Diamantplatte</entry>
+</properties>

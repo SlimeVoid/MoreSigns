@@ -1,17 +1,17 @@
 [
 {
-  "modid": "MultiTexturedSigns",
-  "name": "Multi-Textured Signs",
+  "modid": "MoreSigns",
+  "name": "More Signs",
   "description": "Giving you more choice in minecraft",
   "version": "2.1.0.0",
-  "mcversion": "1.5.1",
-  "url": "https://github.com/SlimeVoid/MultiTexturedSigns",
+  "mcversion": "1.6.4",
+  "url": "https://github.com/SlimeVoid/MoreSigns",
   "updateUrl": "",
   "credits": "",
   "authors": ["Eurymachus"],
   "logoFile": "",
   "screenshots": [""],
   "parent":"",
-  "dependencies": ["EurysCore"]
+  "dependencies": ["SlimevoidLibrary"]
 }
 ]

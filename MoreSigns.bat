@@ -1,16 +1,15 @@
 @echo off
 
-set programdir="C:\Programming"
+set programdir=%CD%\..\..
 set packagedir="%programdir%\Packages"
-set repodir="%programdir%\Repositories"
-set forgedir="%repodir%\MinecraftForge"
-set fmldir="%repodir%\MinecraftForge\fml"
-set mcpdir="%programdir%\mcp"
-set euryscore="%repodir%\EurysCore-FML"
-set mtsigns="%repodir%\MultiTexturedSigns"
+set repodir="%programdir%\Git"
+set forgedir="%programdir%\Forge"
+set mcpdir="%forgedir%\mcp"
+set slimevoidlib="%repodir%\SlimevoidLibrary"
+set moresigns="%repodir%\MoreSigns"
 cd %mcpdir%
 
-if not exist %euryscore% GOTO :ECFAIL
+if not exist %slimevoidlib% GOTO :ECFAIL
 GOTO :EC
 
 :EC
@@ -28,8 +27,8 @@ if exist "%mcpdir%\src-work" GOTO :COPYEC
 GOTO :ECFAIL
 
 :COPYEC
-xcopy "%euryscore%\SV-common\*.*" "%mcpdir%\src\minecraft" /S
-xcopy "%mtsigns%\MTS-source\*.*" "%mcpdir%\src\minecraft" /S
+xcopy "%slimevoidlib%\SV-common\*.*" "%mcpdir%\src\minecraft" /S
+xcopy "%moresigns%\MS-source\*.*" "%mcpdir%\src\minecraft" /S
 pause
 call %mcpdir%\recompile.bat
 call %mcpdir%\reobfuscate.bat
@@ -38,14 +37,14 @@ pause
 
 :REPACKAGE
 if not exist "%mcpdir%\reobf" GOTO :ECFAIL
-if exist "%packagedir%\MultiTexturedSigns" (
-del "%packagedir%\MultiTexturedSigns\*.*" /S /Q
-rmdir "%packagedir%\MultiTexturedSigns" /S /Q
+if exist "%packagedir%\MoreSigns" (
+del "%packagedir%\MoreSigns\*.*" /S /Q
+rmdir "%packagedir%\MoreSigns" /S /Q
 )
-mkdir "%packagedir%\MultiTexturedSigns\eurymachus\mts"
-xcopy "%mcpdir%\reobf\minecraft\eurymachus\mts\*.*" "%packagedir%\MultiTexturedSigns\eurymachus\mts\" /S
-xcopy "%mtsigns%\MTS-resources\*.*" "%packagedir%\MultiTexturedSigns\" /S
-echo "Multi-Textured Signs Packaged Successfully
+mkdir "%packagedir%\MoreSigns\slimevoid\moresigns"
+xcopy "%mcpdir%\reobf\minecraft\slimevoid\moresigns\*.*" "%packagedir%\MoreSigns\slimevoid\moresigns\" /S
+xcopy "%moresigns%\MS-resources\*.*" "%packagedir%\MoreSigns\" /S
+echo "More Signs Packaged Successfully
 pause
 ren "%mcpdir%\src" src-old
 echo Recompiled Source folder renamed
@@ -61,12 +60,12 @@ echo Folder structure reset
 GOTO :ECCOMPLETE
 
 :ECFAIL
-echo Could not compile Multi-Textured Signs
+echo Could not compile More Signs
 pause
 GOTO :EOF
 
 :ECCOMPLETE
-echo Multi-Textured Signs completed compile successfully
+echo More Signs completed compile successfully
 pause
 GOTO :EOF
 

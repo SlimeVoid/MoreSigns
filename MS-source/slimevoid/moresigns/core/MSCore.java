@@ -164,7 +164,7 @@ public class MSCore {
 										Character.valueOf('Y'),
 										MSItemParts.diamondPole.me });
 
-		GameRegistry.addRecipe(	MSItemSigns.woodenSign.me.splitStack(1),
+		GameRegistry.addRecipe(	MSItemSigns.woodenSign.me.splitStack(3),
 								new Object[] {
 										"XXX",
 										"XXX",

@@ -36,7 +36,7 @@ public class ItemSigns extends Item {
 	public ItemSigns(int i) {
 		super(i);
 		this.setHasSubtypes(true);
-		this.setMaxStackSize(1);
+		this.setMaxStackSize(16);
 		this.setMaxDamage(0);
 		this.setNoRepair();
 		this.setCreativeTab(CreativeTabs.tabDecorations);

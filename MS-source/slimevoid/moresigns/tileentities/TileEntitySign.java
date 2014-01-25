@@ -1,5 +1,8 @@
 package slimevoid.moresigns.tileentities;
 
+import java.util.ArrayList;
+
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import slimevoid.moresigns.core.lib.BlockLib;
@@ -98,5 +101,9 @@ public class TileEntitySign extends TileEntityBase {
 
 	public void setTexture(int texture) {
 		this.metadata = texture;
+	}
+
+	@Override
+	protected void addHarvestContents(ArrayList<ItemStack> harvestList) {
 	}
 }

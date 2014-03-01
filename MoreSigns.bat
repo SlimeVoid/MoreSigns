@@ -1,12 +1,12 @@
 @echo off
 
 set programdir=%CD%\..\..
-set packagedir="%programdir%\Packages"
-set repodir="%programdir%\Git"
-set forgedir="%programdir%\Forge"
-set mcpdir="%forgedir%\mcp"
-set slimevoidlib="%repodir%\SlimevoidLibrary"
-set moresigns="%repodir%\MoreSigns"
+set packagedir=%programdir%\Packages
+set repodir=%programdir%\Git
+set forgedir=%programdir%\Forge
+set mcpdir=%forgedir%\mcp
+set slimevoidlib=%repodir%\SlimevoidLibrary\src\main\java
+set moresigns=%repodir%\MoreSigns\src\main
 cd %mcpdir%
 
 if not exist %slimevoidlib% GOTO :ECFAIL
@@ -27,8 +27,8 @@ if exist "%mcpdir%\src-work" GOTO :COPYEC
 GOTO :ECFAIL
 
 :COPYEC
-xcopy "%slimevoidlib%\SV-common\*.*" "%mcpdir%\src\minecraft" /S
-xcopy "%moresigns%\MS-source\*.*" "%mcpdir%\src\minecraft" /S
+xcopy "%slimevoidlib%\*.*" "%mcpdir%\src\minecraft" /S
+xcopy "%moresigns%\java\*.*" "%mcpdir%\src\minecraft" /S
 pause
 call %mcpdir%\recompile.bat
 call %mcpdir%\reobfuscate.bat
@@ -41,9 +41,9 @@ if exist "%packagedir%\MoreSigns" (
 del "%packagedir%\MoreSigns\*.*" /S /Q
 rmdir "%packagedir%\MoreSigns" /S /Q
 )
-mkdir "%packagedir%\MoreSigns\slimevoid\moresigns"
-xcopy "%mcpdir%\reobf\minecraft\slimevoid\moresigns\*.*" "%packagedir%\MoreSigns\slimevoid\moresigns\" /S
-xcopy "%moresigns%\MS-resources\*.*" "%packagedir%\MoreSigns\" /S
+mkdir "%packagedir%\MoreSigns\com\slimevoid\moresigns"
+xcopy "%mcpdir%\reobf\minecraft\com\slimevoid\moresigns\*.*" "%packagedir%\MoreSigns\com\slimevoid\moresigns\" /S
+xcopy "%moresigns%\resources\*.*" "%packagedir%\MoreSigns\" /S
 echo "More Signs Packaged Successfully
 pause
 ren "%mcpdir%\src" src-old

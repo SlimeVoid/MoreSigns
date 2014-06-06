@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.slimevoid.moresigns.core.MSInit;
-import net.slimevoid.moresigns.core.MSItemSigns;
 
 public class BlockMoreSigns extends BlockSign {
 

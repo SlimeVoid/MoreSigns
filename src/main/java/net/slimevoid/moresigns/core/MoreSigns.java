@@ -1,7 +1,9 @@
 package net.slimevoid.moresigns.core;
 
 import net.slimevoid.library.ICommonProxy;
+import net.slimevoid.library.util.helpers.PacketHelper;
 import net.slimevoid.moresigns.core.lib.CoreLib;
+import net.slimevoid.moresigns.core.lib.PacketLib;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -31,6 +33,8 @@ public class MoreSigns {
     @EventHandler
     public void MoreSignsInit(FMLInitializationEvent event) {
         proxy.init();
+        PacketHelper.registerHandler(CoreLib.MOD_CHANNEL,
+                                     PacketLib.handler);
     }
 
     @EventHandler

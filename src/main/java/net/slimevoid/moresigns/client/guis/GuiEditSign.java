@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.slimevoid.library.util.helpers.PacketHelper;
-import net.slimevoid.moresigns.core.MSBlocks;
+import net.slimevoid.moresigns.core.lib.ConfigurationLib;
 import net.slimevoid.moresigns.network.packets.PacketUpdateSign;
 import net.slimevoid.moresigns.tileentities.TileEntitySign;
 
@@ -99,7 +99,7 @@ public class GuiEditSign extends GuiScreen {
                        1.0F,
                        0.0F);
         Block block = mtsEntitySign.getBlockType();
-        if (block == MSBlocks.mtSignPost.me) {
+        if (block == ConfigurationLib.blockIronSign) {
             float f2 = (mtsEntitySign.getBlockMetadata() * 360) / 16F;
             GL11.glRotatef(f2,
                            0.0F,

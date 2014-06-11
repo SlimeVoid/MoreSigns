@@ -13,7 +13,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.slimevoid.moresigns.core.MSBlocks;
 import net.slimevoid.moresigns.core.MoreSigns;
 import net.slimevoid.moresigns.core.lib.GuiLib;
 import net.slimevoid.moresigns.core.lib.IconLib;
@@ -23,6 +22,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 
 public class ItemSigns extends Item {
 
+    protected Block   blockRef_Standing;
+    protected Block   blockRef_Wall;
     protected IIcon[] iconList;
 
     @Override
@@ -34,13 +35,15 @@ public class ItemSigns extends Item {
         iconList[3] = iconRegister.registerIcon(IconLib.ICON_SIGN_DIAMOND);
     }
 
-    public ItemSigns(int i) {
+    public ItemSigns(Block blockRef_Standing, Block blockRef_Wall) {
         super();
         this.setHasSubtypes(true);
         this.setMaxStackSize(16);
         this.setMaxDamage(0);
         this.setNoRepair();
         this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.blockRef_Standing = blockRef_Standing;
+        this.blockRef_Wall = blockRef_Wall;
     }
 
     private String[] signNames = new String[] {
@@ -70,8 +73,6 @@ public class ItemSigns extends Item {
 
     @Override
     public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float a, float b, float c) {
-        Block signpost = MSBlocks.mtSignPost.me;
-        Block wallsign = MSBlocks.mtSignWall.me;
         if (l == 0) {
             return false;
         }
@@ -103,10 +104,10 @@ public class ItemSigns extends Item {
                                         itemstack)) {
             return false;
         }
-        if (!signpost.canPlaceBlockAt(world,
-                                      i,
-                                      j,
-                                      k)) {
+        if (!this.blockRef_Standing.canPlaceBlockAt(world,
+                                                    i,
+                                                    j,
+                                                    k)) {
             return false;
         }
         if (l == 1) {
@@ -114,14 +115,14 @@ public class ItemSigns extends Item {
             world.setBlock(i,
                            j,
                            k,
-                           signpost,
+                           this.blockRef_Standing,
                            i1,
                            0x02);
         } else {
             world.setBlock(i,
                            j,
                            k,
-                           wallsign,
+                           this.blockRef_Wall,
                            l,
                            0x02);
         }

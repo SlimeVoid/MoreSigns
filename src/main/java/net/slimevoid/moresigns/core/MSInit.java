@@ -25,9 +25,6 @@ public class MSInit {
         SlimevoidCore.console(CoreLib.MOD_ID,
                               "Registering items...");
         MSCore.addItems();
-        SlimevoidCore.console(CoreLib.MOD_ID,
-                              "Registering blocks...");
-        MSCore.registerBlocks();
         MoreSigns.proxy.registerRenderInformation();
         MoreSigns.proxy.registerTileEntitySpecialRenderer(TileEntitySign.class);
         SlimevoidCore.console(CoreLib.MOD_ID,

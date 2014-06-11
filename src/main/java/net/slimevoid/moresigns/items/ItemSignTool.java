@@ -19,7 +19,7 @@ public class ItemSignTool extends Item {
         this.itemIcon = iconRegister.registerIcon(IconLib.ICON_SIGN_TOOL);
     }
 
-    public ItemSignTool(int i) {
+    public ItemSignTool() {
         super();
         this.setFull3D();
         this.setMaxStackSize(1);

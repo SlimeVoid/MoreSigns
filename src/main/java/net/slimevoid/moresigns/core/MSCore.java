@@ -2,16 +2,14 @@ package net.slimevoid.moresigns.core;
 
 import java.io.File;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.config.Configuration;
-import net.slimevoid.moresigns.blocks.BlockMoreSigns;
-import net.slimevoid.moresigns.core.lib.ItemLib;
-import net.slimevoid.moresigns.items.ItemSignParts;
-import net.slimevoid.moresigns.items.ItemSignTool;
-import net.slimevoid.moresigns.items.ItemSigns;
+import net.slimevoid.moresigns.core.lib.BlockLib;
+import net.slimevoid.moresigns.core.lib.EnumBlockSigns;
+import net.slimevoid.moresigns.core.lib.EnumItemSignParts;
+import net.slimevoid.moresigns.core.lib.EnumItemSigns;
 import net.slimevoid.moresigns.tileentities.TileEntitySign;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -27,7 +25,7 @@ public class MSCore {
     }
 
     public static void addItems() {
-        MSBlocks.mtSignPost.id = configurationProperties();
+        configurationProperties();
         // RecipeRemover.registerItemRecipeToRemove(Item.sign);
         // RecipeRemover.removeCrafting();
         // BlockRemover.removeVanillaBlock(Block.signPost,
@@ -35,57 +33,51 @@ public class MSCore {
         // BlockRemover.removeVanillaBlock(Block.signWall,
         // true);
         // ItemRemover.removeVanillaItem(Item.sign);
-        MSBlocks.mtSignPost.me = (new BlockMoreSigns(MSBlocks.mtSignPost.id, TileEntitySign.class, true, 1F, 2F, true, true)).setBlockName("mtSignPost");
-        MSBlocks.mtSignWall.me = (new BlockMoreSigns(MSBlocks.mtSignWall.id, TileEntitySign.class, false, 1F, 2F, true, true)).setBlockName("mtSignWall");
-        GameRegistry.registerTileEntity(TileEntitySign.class,
-                                        "mtSign");
-        MSItems.mtsItemSignParts.me = (new ItemSignParts(MSItems.mtsItemSignParts.offsetID())).setUnlocalizedName(ItemLib.PART_PREFIX);
-        MSItems.mtsItemSigns.me = (new ItemSigns(MSItems.mtsItemSigns.getID())).setUnlocalizedName(ItemLib.SIGN_PREFIX);
-        MSItems.mtsItemSignTool.me = (new ItemSignTool(MSItems.mtsItemSignTool.offsetID())).setUnlocalizedName(ItemLib.TOOL_PREFIX);
-        for (MSItemParts part : MSItemParts.values()) {
-            part.me = new ItemStack(MSItems.mtsItemSignParts.me, 1, part.stackID);
-        }
-        for (MSItemSigns sign : MSItemSigns.values()) {
-            sign.me = new ItemStack(MSItems.mtsItemSigns.me, 1, sign.stackID);
-        }
+        EnumBlockSigns.registerBlockSigns();
+        setBlockReferences();
+        EnumItemSigns.registerItemSigns();
+        EnumItemSignParts.registerItemSignParts();
         setDroppedItems();
+        GameRegistry.registerTileEntity(TileEntitySign.class,
+                                        BlockLib.BLOCK_SIGN);
+    }
+
+    private static void setBlockReferences() {
+        EnumItemSigns.IRON.setBlockReference(EnumBlockSigns.IRON_STANDING.getInstance(),
+                                             EnumBlockSigns.IRON_WALL.getInstance());
+        EnumItemSigns.GOLD.setBlockReference(EnumBlockSigns.GOLD_STANDING.getInstance(),
+                                             EnumBlockSigns.GOLD_WALL.getInstance());
+        EnumItemSigns.DIAMOND.setBlockReference(EnumBlockSigns.DIAMOND_STANDING.getInstance(),
+                                                EnumBlockSigns.DIAMOND_WALL.getInstance());
     }
 
     private static void setDroppedItems() {
-        MSItemSigns.woodenSign.droppedItem = MSItemSigns.woodenSign.me.splitStack(1);
-        MSItemSigns.ironCladSign.droppedItem = MSItemParts.ironCladPlating.me.splitStack(1);
-        MSItemSigns.goldPlatedSign.droppedItem = MSItemParts.goldPlating.me.splitStack(1);
-        MSItemSigns.diamondLatheredSign.droppedItem = MSItemParts.diamondPlating.me.splitStack(1);
-    }
-
-    public static void registerBlocks() {
-        for (MSBlocks block : MSBlocks.values()) {
-            if (block != null && block.me != null) {
-                System.out.println("Registering Block[" + block.name + "]");
-                GameRegistry.registerBlock(block.me,
-                                           block.name);
-            }
-        }
+        EnumBlockSigns.IRON_STANDING.setDroppedItem(EnumItemSignParts.IRON_PLATING.getItemStack(1));
+        EnumBlockSigns.IRON_WALL.setDroppedItem(EnumItemSignParts.IRON_PLATING.getItemStack(1));
+        EnumBlockSigns.GOLD_STANDING.setDroppedItem(EnumItemSignParts.GOLD_PLATING.getItemStack(1));
+        EnumBlockSigns.GOLD_WALL.setDroppedItem(EnumItemSignParts.GOLD_PLATING.getItemStack(1));
+        EnumBlockSigns.DIAMOND_STANDING.setDroppedItem(EnumItemSignParts.DIAMOND_PLATING.getItemStack(1));
+        EnumBlockSigns.DIAMOND_WALL.setDroppedItem(EnumItemSignParts.DIAMOND_PLATING.getItemStack(1));
     }
 
     public static void addRecipes() {
 
         // Plating
-        GameRegistry.addRecipe(MSItemParts.ironCladPlating.me.splitStack(2),
+        GameRegistry.addRecipe(EnumItemSignParts.IRON_PLATING.getItemStack(2),
                                new Object[] {
                                        "XX",
                                        "XX",
                                        Character.valueOf('X'),
                                        Items.iron_ingot });
 
-        GameRegistry.addRecipe(MSItemParts.goldPlating.me.splitStack(2),
+        GameRegistry.addRecipe(EnumItemSignParts.GOLD_PLATING.getItemStack(2),
                                new Object[] {
                                        "XX",
                                        "XX",
                                        Character.valueOf('X'),
                                        Items.gold_ingot });
 
-        GameRegistry.addRecipe(MSItemParts.diamondPlating.me.splitStack(2),
+        GameRegistry.addRecipe(EnumItemSignParts.DIAMOND_PLATING.getItemStack(2),
                                new Object[] {
                                        "XX",
                                        "XX",
@@ -93,7 +85,7 @@ public class MSCore {
                                        Items.diamond });
 
         // Poles
-        GameRegistry.addRecipe(MSItemParts.ironCladPole.me.splitStack(8),
+        GameRegistry.addRecipe(EnumItemSignParts.IRON_POLE.getItemStack(8),
                                new Object[] {
                                        "X",
                                        "Y",
@@ -102,7 +94,7 @@ public class MSCore {
                                        Character.valueOf('Y'),
                                        Items.stick });
 
-        GameRegistry.addRecipe(MSItemParts.goldenPole.me.splitStack(8),
+        GameRegistry.addRecipe(EnumItemSignParts.GOLD_POLE.getItemStack(8),
                                new Object[] {
                                        "X",
                                        "Y",
@@ -111,7 +103,7 @@ public class MSCore {
                                        Character.valueOf('Y'),
                                        Items.stick });
 
-        GameRegistry.addRecipe(MSItemParts.diamondPole.me.splitStack(8),
+        GameRegistry.addRecipe(EnumItemSignParts.DIAMOND_POLE.getItemStack(8),
                                new Object[] {
                                        "X",
                                        "Y",
@@ -121,42 +113,32 @@ public class MSCore {
                                        Items.stick });
 
         // Signs
-        GameRegistry.addRecipe(MSItemSigns.ironCladSign.me.splitStack(1),
+        GameRegistry.addRecipe(EnumItemSigns.IRON.getItemStack(1),
                                new Object[] {
                                        "X",
                                        "Y",
                                        Character.valueOf('X'),
-                                       MSItemParts.ironCladPlating.me,
+                                       EnumItemSignParts.IRON_PLATING.getItemStack(1),
                                        Character.valueOf('Y'),
-                                       MSItemParts.ironCladPole.me });
-        GameRegistry.addRecipe(MSItemSigns.goldPlatedSign.me.splitStack(1),
+                                       EnumItemSignParts.IRON_POLE.getItemStack(1) });
+        GameRegistry.addRecipe(EnumItemSigns.GOLD.getItemStack(1),
                                new Object[] {
                                        "X",
                                        "Y",
                                        Character.valueOf('X'),
-                                       MSItemParts.goldPlating.me,
+                                       EnumItemSignParts.GOLD_PLATING.getItemStack(1),
                                        Character.valueOf('Y'),
-                                       MSItemParts.goldenPole.me });
-        GameRegistry.addRecipe(MSItemSigns.diamondLatheredSign.me.splitStack(1),
+                                       EnumItemSignParts.GOLD_POLE.getItemStack(1) });
+        GameRegistry.addRecipe(EnumItemSigns.DIAMOND.getItemStack(1),
                                new Object[] {
                                        "X",
                                        "Y",
                                        Character.valueOf('X'),
-                                       MSItemParts.diamondPlating.me,
+                                       EnumItemSignParts.DIAMOND_PLATING.getItemStack(1),
                                        Character.valueOf('Y'),
-                                       MSItemParts.diamondPole.me });
+                                       EnumItemSignParts.DIAMOND_POLE.getItemStack(1) });
 
-        GameRegistry.addRecipe(MSItemSigns.woodenSign.me.splitStack(3),
-                               new Object[] {
-                                       "XXX",
-                                       "XXX",
-                                       " Y ",
-                                       Character.valueOf('X'),
-                                       Blocks.planks,
-                                       Character.valueOf('Y'),
-                                       Items.stick });
-
-        GameRegistry.addRecipe(MSItemSigns.ironCladSign.me.splitStack(1),
+        GameRegistry.addRecipe(EnumItemSigns.IRON.getItemStack(1),
                                new Object[] {
                                        "X",
                                        "Y",
@@ -164,9 +146,9 @@ public class MSCore {
                                        Character.valueOf('X'),
                                        Items.iron_ingot,
                                        Character.valueOf('Y'),
-                                       MSItemSigns.woodenSign.me });
+                                       Items.sign });
 
-        GameRegistry.addRecipe(MSItemSigns.goldPlatedSign.me.splitStack(1),
+        GameRegistry.addRecipe(EnumItemSigns.GOLD.getItemStack(1),
                                new Object[] {
                                        "X",
                                        "Y",
@@ -174,9 +156,9 @@ public class MSCore {
                                        Character.valueOf('X'),
                                        Items.gold_ingot,
                                        Character.valueOf('Y'),
-                                       MSItemSigns.woodenSign.me });
+                                       Items.sign });
 
-        GameRegistry.addRecipe(MSItemSigns.diamondLatheredSign.me.splitStack(1),
+        GameRegistry.addRecipe(EnumItemSigns.DIAMOND.getItemStack(1),
                                new Object[] {
                                        "X",
                                        "Y",
@@ -184,20 +166,20 @@ public class MSCore {
                                        Character.valueOf('X'),
                                        Items.diamond,
                                        Character.valueOf('Y'),
-                                       MSItemSigns.woodenSign.me });
+                                       Items.sign });
 
-        FurnaceRecipes.smelting().func_151394_a/* .addSmelting */(new ItemStack(MSItems.mtsItemSignParts.me, MSItemParts.ironCladPlating.stackID),
+        FurnaceRecipes.smelting().func_151394_a/* .addSmelting */(EnumItemSignParts.IRON_PLATING.getItemStack(1),
                                                                   (new ItemStack(Items.iron_ingot, 2)),
                                                                   0);
-        FurnaceRecipes.smelting().func_151394_a/* addSmelting */(new ItemStack(MSItems.mtsItemSignParts.me, MSItemParts.goldPlating.stackID),
+        FurnaceRecipes.smelting().func_151394_a/* addSmelting */(EnumItemSignParts.GOLD_PLATING.getItemStack(1),
                                                                  (new ItemStack(Items.gold_ingot, 2)),
                                                                  2);
-        FurnaceRecipes.smelting().func_151394_a/* addSmelting */(new ItemStack(MSItems.mtsItemSignParts.me, MSItemParts.diamondPlating.stackID),
+        FurnaceRecipes.smelting().func_151394_a/* addSmelting */(EnumItemSignParts.DIAMOND_PLATING.getItemStack(1),
                                                                  (new ItemStack(Items.diamond, 2)),
                                                                  4);
 
         // Wand
-        GameRegistry.addRecipe(new ItemStack(MSItems.mtsItemSignTool.me, 1),
+        GameRegistry.addRecipe(EnumItemSignParts.SIGN_TOOL.getItemStack(1),
                                new Object[] {
                                        "OXO",
                                        "ISI",
@@ -210,45 +192,9 @@ public class MSCore {
                                        Items.stick });
     }
 
-    public static int configurationProperties() {
+    public static void configurationProperties() {
         configuration.load();
-        MSBlocks.mtSignWall.name = "Multi-Textured Wall-Sign";
-        MSBlocks.mtSignPost.name = "Multi-Textured Sign-Post";
-
-        MSItems.mtsItemSignParts.setID(configuration.get(Configuration.CATEGORY_GENERAL,
-                                                         "mtSignParts",
-                                                         7000).getInt());
-        MSItems.mtsItemSignParts.name = "Multi-Textured Sign Part";
-        // .value));
-        MSItems.mtsItemSigns.name = "Multi-Textured Sign";
-
-        MSItems.mtsItemSignTool.setID(configuration.get(Configuration.CATEGORY_GENERAL,
-                                                        "mtSignTool",
-                                                        7001).getInt());
-        MSItems.mtsItemSignTool.name = "Multi-Textured Sign Wand";
-
-        MSItemParts.ironCladPlating.name = "Iron-Clad Plating";
-        MSItemParts.ironCladPlating.stackID = 0;
-        MSItemParts.ironCladPole.name = "Iron-Clad Pole";
-        MSItemParts.ironCladPole.stackID = 1;
-        MSItemParts.goldPlating.name = "Gold Plating";
-        MSItemParts.goldPlating.stackID = 2;
-        MSItemParts.goldenPole.name = "Golden Pole";
-        MSItemParts.goldenPole.stackID = 3;
-        MSItemParts.diamondPlating.name = "Diamond-Studded Plating";
-        MSItemParts.diamondPlating.stackID = 4;
-        MSItemParts.diamondPole.name = "Diamond-Encrusted Pole";
-        MSItemParts.diamondPole.stackID = 5;
-        MSItemSigns.woodenSign.name = "Wooden Sign";
-        MSItemSigns.woodenSign.stackID = 0;
-        MSItemSigns.ironCladSign.name = "Iron-Clad Sign";
-        MSItemSigns.ironCladSign.stackID = 1;
-        MSItemSigns.goldPlatedSign.name = "Gold-Plated Sign";
-        MSItemSigns.goldPlatedSign.stackID = 2;
-        MSItemSigns.diamondLatheredSign.name = "Diamond-Lathered Sign";
-        MSItemSigns.diamondLatheredSign.stackID = 3;
 
         configuration.save();
-        return MSBlocks.mtSignPost.id;
     }
 }

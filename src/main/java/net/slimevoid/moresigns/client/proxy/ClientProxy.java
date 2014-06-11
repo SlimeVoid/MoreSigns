@@ -8,11 +8,18 @@ import net.slimevoid.library.util.helpers.BlockHelper;
 import net.slimevoid.moresigns.client.guis.GuiEditSign;
 import net.slimevoid.moresigns.client.render.TileEntitySignRenderer;
 import net.slimevoid.moresigns.core.lib.GuiLib;
+import net.slimevoid.moresigns.core.lib.PacketLib;
 import net.slimevoid.moresigns.proxy.CommonProxy;
 import net.slimevoid.moresigns.tileentities.TileEntitySign;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy {
+
+    @Override
+    public void init() {
+        super.init();
+        PacketLib.registerClientPacketHandlers();
+    }
 
     @Override
     public String getMinecraftDir() {

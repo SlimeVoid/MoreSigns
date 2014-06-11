@@ -25,7 +25,7 @@ public class ItemSignParts extends Item {
         iconList[5] = iconRegister.registerIcon(IconLib.ICON_PART_POLE_DIAMOND);
     }
 
-    public ItemSignParts(int i) {
+    public ItemSignParts() {
         super();
         this.setHasSubtypes(true);
         this.setMaxDamage(0);

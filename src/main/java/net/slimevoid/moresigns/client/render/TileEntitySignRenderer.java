@@ -5,8 +5,8 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.slimevoid.moresigns.core.MSBlocks;
 import net.slimevoid.moresigns.core.lib.BlockLib;
+import net.slimevoid.moresigns.core.lib.ConfigurationLib;
 import net.slimevoid.moresigns.tileentities.TileEntitySign;
 
 import org.lwjgl.opengl.GL11;
@@ -22,7 +22,7 @@ public class TileEntitySignRenderer extends TileEntitySpecialRenderer {
         Block block = mtstileentitysign.getBlockType();
         GL11.glPushMatrix();
         float f1 = 0.6666667F;
-        if (block == MSBlocks.mtSignPost.me) {
+        if (block == ConfigurationLib.blockIronSign) {
             GL11.glTranslatef((float) d + 0.5F,
                               (float) d1 + 0.75F * f1,
                               (float) d2 + 0.5F);

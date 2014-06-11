@@ -11,6 +11,7 @@ import net.slimevoid.moresigns.container.ContainerSign;
 import net.slimevoid.moresigns.core.MSCore;
 import net.slimevoid.moresigns.core.MoreSigns;
 import net.slimevoid.moresigns.core.lib.GuiLib;
+import net.slimevoid.moresigns.core.lib.PacketLib;
 import net.slimevoid.moresigns.tileentities.TileEntitySign;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
@@ -57,6 +58,7 @@ public class CommonProxy implements ICommonProxy {
 
     @Override
     public void init() {
+        PacketLib.registerPacketHandlers();
     }
 
     @Override

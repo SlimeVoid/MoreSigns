@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<comment>Simplified Chinese (zh_CN) Localization File</comment>
+	<entry key="item.ms.sign.wood.name">木牌</entry>
+	<entry key="item.ms.sign.iron.name">铁牌</entry>
+	<entry key="item.ms.sign.gold.name">金牌</entry>
+	<entry key="item.ms.sign.diamond.name">钻石牌子</entry>
+	<entry key="item.ms.part.pole.iron.name">铁杆</entry>
+	<entry key="item.ms.part.pole.gold.name">金杆</entry>
+	<entry key="item.ms.part.pole.diamond.name">钻石杆</entry>
+	<entry key="item.ms.part.plate.iron.name">铁板</entry>
+	<entry key="item.ms.part.plate.gold.name">金板</entry>
+	<entry key="item.ms.part.plate.diamond.name">钻石板</entry>
+</properties>
